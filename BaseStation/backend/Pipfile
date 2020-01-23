@@ -1,0 +1,13 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+opencv-contrib-python = "==3.4.4.*"
+matplotlib = "*"
+pillow = "*"
+pandas = "*"
+
+[requires]
+python_version = "3.5"
