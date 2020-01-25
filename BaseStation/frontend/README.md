@@ -22,3 +22,20 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Helpful informations
+
+### Structure
+
+- **`api`** : Contains one file per section that connects to the base station (probably by socket connection)
+- **`assets`** : Contains static files like styles and images
+- **`components`** : Where all components go. A small hierarchy could be helpful (for grouping bigger sections or component types)
+- **`router`** : Only contains the routing file `index.js`. You need to declare all the views in this file. 
+- **`views`** : Contains all the views, aka "pages" of the app. Should be helpful for switching between different layers or interfaces (like debug-mode).
+
+### Aliases
+
+For easier importing, there are 2 aliases that has been setup on webpack. 
+
+- **`@`** : Alias for the `src` folder (root). 
+- **`styles`** : Alias for the `src/assets/scss` folder. Used for importing inside a `<style>` tag. (**NOTE**: a `~` is needed at the beginning of the path inside the `<style>` tag).
