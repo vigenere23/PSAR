@@ -39,3 +39,8 @@ For easier importing, there are 2 aliases that has been setup on webpack.
 
 - **`@`** : Alias for the `src` folder (root). 
 - **`styles`** : Alias for the `src/assets/scss` folder. Used for importing inside a `<style>` tag. (**NOTE**: a `~` is needed at the beginning of the path inside the `<style>` tag).
+
+### Pages
+
+- **`/`** : Home page. Will be the main interface.
+- **`/widgets`** : Small page to view all the components in action. Helpfull for rapidly debugging component's styling and behavior, without having to play with the layout. 
