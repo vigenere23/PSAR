@@ -1,5 +1,6 @@
 from .app import app, socketio
 from flask_socketio import emit
+from .interfaces.socket_api import TestNamespace
 
 @app.route('/')
 def index():
@@ -10,18 +11,7 @@ def index():
     'and see if that works.'
   )
 
-@socketio.on('connect')
-def handle_connection():
-  print('Client connected!')
-
-@socketio.on('disconnect')
-def handle_disconnection():
-  print('Client disconnected')
-
-@socketio.on('request_event')
-def test_message(message):
-  data = 'Yes, yess, I received your message : {}'.format(message)
-  emit('response_event', { 'data': data })
+socketio.on_namespace(TestNamespace(''))
 
 if __name__ == '__main__':
   socketio.run(app)
