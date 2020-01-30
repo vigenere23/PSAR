@@ -25,5 +25,11 @@ We will use pipfile to facilitate python environment. Here is a [guide on how to
 ## Running
 
 ```bash
-python3 -m src.wsgi
+python -m src.wsgi
+```
+
+## Testing
+
+```bash
+python -m tests.all
 ```
