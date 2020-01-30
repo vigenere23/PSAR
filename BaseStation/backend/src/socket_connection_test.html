@@ -1,0 +1,23 @@
+<html>
+  <meta charset="utf-8">
+  <p>Open your console with F12 to see if it worked.</p>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    const socket = io.connect('http://127.0.0.1:5000', {'pingTimeout': 1, 'pingInterval': 1})
+
+    socket.on('connect', () => {
+      const message = 'Hello, world!'
+      console.log('Connected!')
+      console.log(`Sending message '${message}'...`)
+      socket.emit('request_event', message)
+      console.log('Message sent!')
+    })
+
+    socket.on('response_event', response => {
+      console.log(`Received message '${response.data}' from server`)
+      console.log('Trying to disconnect...')
+      socket.disconnect()
+      console.log(socket.disconnected ? 'Disconnected!' : 'Could not disconnect socket :(')
+    })
+  </script>
+</html>
