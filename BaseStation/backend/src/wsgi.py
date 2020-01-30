@@ -1,3 +1,6 @@
 import os
+from .config import socketio_config
 
-os.system('uwsgi --socket 0.0.0.0:5000 --protocol=http --enable-threads -w src.main:app')
+connection_string = '{}:{}'.format(socketio_config['host'], socketio_config['port'])
+
+os.system('uwsgi --socket {} --protocol=http --enable-threads -w src.main:app'.format(connection_string))

@@ -1,8 +1,14 @@
 from flask import Flask
 from flask_socketio import SocketIO
-from .config import app_config
-    
-app = Flask(__name__)
-app.config['SECRET_KEY'] = app_config['flask']['secret']
+from .config import flask_config, socketio_config
 
-socketio = SocketIO(app, **app_config['socketio'])
+app = Flask(__name__)
+app.config['SECRET_KEY'] = flask_config['secret']
+
+
+socketio = SocketIO(
+  app,
+  ping_timeout=socketio_config['ping_timeout'],
+  ping_interval=socketio_config['ping_interval'],
+  cors_allowed_origins=socketio_config['cors_allowed_origins']
+)

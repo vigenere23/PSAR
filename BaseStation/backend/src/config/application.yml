@@ -2,6 +2,8 @@ socketio:
   ping_timeout: 1
   ping_interval: 1
   cors_allowed_origins: '*'
+  host: 'localhost'
+  port: 5000
 
 flask:
   secret: 'place your secret key here'
