@@ -1,0 +1,7 @@
+socketio:
+  ping_timeout: 1
+  ping_interval: 1
+  cors_allowed_origins: '*'
+
+flask:
+  secret: 'place your secret key here'
