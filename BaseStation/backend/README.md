@@ -25,7 +25,7 @@ We will use pipfile to facilitate python environment. Here is a [guide on how to
 ## Running
 
 ```bash
-python -m src.wsgi
+python -m src.main
 ```
 
 ## Testing
