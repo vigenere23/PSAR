@@ -1,7 +1,7 @@
 from src.context import Context
 from src.interfaces.socket_api import TestNamespace, SequenceNamespace
 from src.domain.sequence import SequenceRunner
-from src.domain.sequence.tasks import TaskContainer, LoopTask
+from src.domain.sequence.tasks import TaskContainer, LoopTask, EndOfSequenceTask
 
 class SocketApiContext(Context):
 
@@ -14,7 +14,7 @@ class SocketApiContext(Context):
     # TODO move this to specific contexts + use auto deps injection
     task_container = TaskContainer(self.__socketio)
     task_container.add_task(LoopTask(self.__socketio))
-    task_container.add_task(LoopTask(self.__socketio))
+    task_container.add_task(EndOfSequenceTask(self.__socketio))
 
     sequence_runner = SequenceRunner(self.__socketio, task_container)
     sequence_namespace = SequenceNamespace('/sequence', sequence_runner)

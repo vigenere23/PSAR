@@ -9,6 +9,5 @@ class TaskContainer:
 
   def execute(self):
     for task in self.__tasks:
-      self.__socketio.send("Task '{}' started...".format(task.name))
+      self.__socketio.emit('task_started', task.name, namespace='/sequence')
       task.execute()
-      self.__socketio.send("Task '{}' ended.".format(task.name))
