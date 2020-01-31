@@ -16,6 +16,6 @@ class SocketApiContext(Context):
     task_container.add_task(LoopTask(self.__socketio))
     task_container.add_task(LoopTask(self.__socketio))
 
-    sequence_runner = SequenceRunner(task_container)
+    sequence_runner = SequenceRunner(self.__socketio, task_container)
     sequence_namespace = SequenceNamespace('/sequence', sequence_runner)
     self.__socketio.on_namespace(sequence_namespace)
