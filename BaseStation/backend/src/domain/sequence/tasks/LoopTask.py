@@ -7,6 +7,6 @@ class LoopTask(Task):
     self.__socketio = socketio
 
   def execute(self):
-    for i in range(10):
+    for i in range(5):
       self.__socketio.send('This is the message #{} from within the task!'.format(i))
       self.__socketio.sleep(1)
