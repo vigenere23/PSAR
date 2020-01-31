@@ -1,6 +1,10 @@
 from flask_socketio import Namespace, emit
 
 class TestNamespace(Namespace):
+
+  def __init__(self, namespace):
+    super().__init__(namespace)
+
   def on_connect(self):
     print('Client connected!')
 
