@@ -10,4 +10,7 @@ class TaskContainer:
   def execute(self):
     for task in self.__tasks:
       self.__socketio.emit('task_started', task.name, namespace='/sequence')
-      task.execute()
+      try:
+        task.execute()
+      except Exception as exception:
+        self.__socketio.emit('error', { 'task': task.name, 'message': str(exception) }, namespace='/sequence')

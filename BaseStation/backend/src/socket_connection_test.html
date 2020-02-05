@@ -31,5 +31,9 @@
     sequenceSocket.on('ended', () => {
       console.log('sequence ended')
     })
+
+    sequenceSocket.on('error', (error) => {
+      console.error(`task: '${error.task}', error: '${error.message}'`)
+    })
   </script>
 </html>
