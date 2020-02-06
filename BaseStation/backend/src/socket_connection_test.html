@@ -8,7 +8,8 @@
     const sequenceSocket = io.connect(path + '/sequence')
 
     const logMessage = message => console.log(message)
-
+    const stopSequence = () => sequenceSocket.emit('stop')
+    
     socket.on('connect', () => {
       const message = 'Hello, world!'
       console.log('Connected!')
@@ -16,6 +17,7 @@
       socket.emit('request_event', message)
       console.log('Message sent!')
       sequenceSocket.emit('start')
+      setTimeout(stopSequence, 1000)
     })
 
     socket.on('response_event', response => {
