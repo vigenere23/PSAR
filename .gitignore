@@ -1,5 +1,5 @@
 *.lock
-
 *.idea
-
 *.pyc
+**/.vscode/
+**/__pycache__/
