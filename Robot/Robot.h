@@ -11,7 +11,7 @@
 class Robot {
 private:
     CommunicationUART communicationUART;
-    AnalogIn analogInServo1; // current measurement
+    AnalogIn analogInServo1; // voltage measurement
     AnalogIn analogInServo2;
     AnalogIn analogInMotor1;
     AnalogIn analogInMotor2;
@@ -21,6 +21,10 @@ private:
 
 public:
     Robot();
+    void move(int x, int y);
+    void rotate(int directionSpeed);
+    unsigned int getResistor();
+    void setGripper(bool state);
 };
 
 
