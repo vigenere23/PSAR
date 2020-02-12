@@ -5,7 +5,7 @@ monkey.patch_all()
 
 from .app import app, socketio
 from .config import socketio_config
-from .context.interfaces.socket_api import SocketApiContext
+from .context.interfaces.socket_handlers import SocketApiContext
 
 SocketApiContext(socketio).register()
 

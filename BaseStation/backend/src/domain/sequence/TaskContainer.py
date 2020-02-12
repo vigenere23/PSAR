@@ -1,7 +1,7 @@
 class TaskContainer:
 
-    def __init__(self, socketio):
-        self.__socketio = socketio
+    def __init__(self, sequence_event_emitter):
+        self.__sequence_event_emitter = sequence_event_emitter
         self.__tasks = []
 
     def add_task(self, task):
@@ -16,14 +16,10 @@ class TaskContainer:
             tasks = tasks[first_task_index:]
 
         for task in tasks:
-            self.__socketio.emit(
-                'task_started', task.name, namespace='/sequence'
-            )
+            self.__sequence_event_emitter.send_task_started(task.name)
             try:
                 task.execute()
             except Exception as exception:
-                self.__socketio.emit(
-                    'error',
-                    {'task': task.name, 'message': str(exception)},
-                    namespace='/sequence'
+                self.__sequence_event_emitter.send_error(
+                    task.name, str(exception)
                 )

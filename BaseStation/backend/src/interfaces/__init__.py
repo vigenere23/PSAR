@@ -1,1 +1,1 @@
-from .socket_api import TestNamespace
+from .socket_handlers import TestNamespace
