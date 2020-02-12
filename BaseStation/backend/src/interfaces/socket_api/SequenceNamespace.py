@@ -1,5 +1,5 @@
-from flask_socketio import Namespace, emit
-from flask_socketio import socketio
+from flask_socketio import Namespace
+
 
 class SequenceNamespace(Namespace):
 

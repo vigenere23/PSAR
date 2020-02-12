@@ -1,5 +1,6 @@
 from flask_socketio import Namespace, emit
 
+
 class TestNamespace(Namespace):
 
     def __init__(self, namespace):
@@ -13,4 +14,4 @@ class TestNamespace(Namespace):
 
     def on_request_event(self, message):
         data = 'Yes, yess, I received your message : {}'.format(message)
-        emit('response_event', { 'data': data })
+        emit('response_event', {'data': data})

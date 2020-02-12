@@ -3,6 +3,7 @@ from src.interfaces.socket_api import TestNamespace, SequenceNamespace
 from src.domain.sequence import SequenceRunner, TaskContainer
 from src.domain.sequence.tasks import LoopTask, EndOfSequenceTask, ErrorTask
 
+
 class SocketApiContext(Context):
 
     def __init__(self, socketio):

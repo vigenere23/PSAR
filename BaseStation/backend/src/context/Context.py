@@ -1,4 +1,4 @@
 class Context:
 
-  def register(self):
-    raise NotImplementedError()
+    def register(self):
+        raise NotImplementedError()

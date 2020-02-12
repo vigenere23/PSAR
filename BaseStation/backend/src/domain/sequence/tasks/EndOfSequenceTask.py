@@ -1,5 +1,6 @@
 from .. import Task
 
+
 class EndOfSequenceTask(Task):
 
     def __init__(self, socketio):
