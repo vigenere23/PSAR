@@ -1,1 +1,2 @@
-from .test_namespace import TestNamespace
+from .TestNamespace import TestNamespace
+from .SequenceNamespace import SequenceNamespace

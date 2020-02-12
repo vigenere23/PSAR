@@ -3,21 +3,39 @@
   <p>Open your console with F12 to see if it worked.</p>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
   <script type="text/javascript">
-    const socket = io.connect('http://0.0.0.0:5000')
+    const path = 'http://0.0.0.0:5000'
+    const socket = io.connect(path)
+    const sequenceSocket = io.connect(path + '/sequence')
 
+    const logMessage = message => console.log(message)
+    const stopSequence = () => sequenceSocket.emit('stop')
+    
     socket.on('connect', () => {
       const message = 'Hello, world!'
       console.log('Connected!')
       console.log(`Sending message '${message}'...`)
       socket.emit('request_event', message)
       console.log('Message sent!')
+      sequenceSocket.emit('start')
+      setTimeout(stopSequence, 1000)
     })
 
     socket.on('response_event', response => {
       console.log(`Received message '${response.data}' from server`)
-      console.log('Trying to disconnect...')
-      socket.disconnect()
-      console.log(socket.disconnected ? 'Disconnected!' : 'Could not disconnect socket :(')
+    })
+
+    socket.on('message', logMessage)
+
+    sequenceSocket.on('task_started', (name) => {
+      console.log(`task '${name}' started`)
+    })
+    
+    sequenceSocket.on('ended', () => {
+      console.log('sequence ended')
+    })
+
+    sequenceSocket.on('error', (error) => {
+      console.error(`task: '${error.task}', error: '${error.message}'`)
     })
   </script>
 </html>
