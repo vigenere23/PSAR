@@ -12,6 +12,9 @@ class SequenceSocketEventEmitter(SequenceEventEmitter):
             'task_started', task_name, namespace=self.__namespace
         )
 
+    def send_sequence_ended(self):
+        self.__socketio.emit('ended', namespace=self.__namespace)
+
     def send_error(self, task_name, message):
         self.__socketio.emit(
             'error',

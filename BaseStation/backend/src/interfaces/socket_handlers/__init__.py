@@ -1,2 +1,1 @@
-from .TestNamespace import TestNamespace
-from .SequenceNamespace import SequenceNamespace
+from .SequenceSocketEventHandler import SequenceSocketEventHandler

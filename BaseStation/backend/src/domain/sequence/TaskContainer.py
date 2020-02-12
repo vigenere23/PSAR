@@ -23,3 +23,5 @@ class TaskContainer:
                 self.__sequence_event_emitter.send_error(
                     task.name, str(exception)
                 )
+
+        self.__sequence_event_emitter.send_sequence_ended()

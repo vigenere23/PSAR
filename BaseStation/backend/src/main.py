@@ -5,9 +5,9 @@ monkey.patch_all()
 
 from .app import app, socketio
 from .config import socketio_config
-from .context.interfaces.socket_handlers import SocketApiContext
+from .context.interfaces.socket_handlers import SocketHandlersContext
 
-SocketApiContext(socketio).register()
+SocketHandlersContext(socketio).register()
 
 if __name__ == '__main__':
     socketio.run(
