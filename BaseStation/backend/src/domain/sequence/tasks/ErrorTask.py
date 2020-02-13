@@ -1,6 +1,7 @@
 from .. import Task
 
 
+# TODO remove once error handling will be implemented
 class ErrorTask(Task):
 
     def __init__(self, socketio):

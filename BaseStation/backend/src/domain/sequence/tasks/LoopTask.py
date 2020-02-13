@@ -1,6 +1,7 @@
 from .. import Task
 
 
+# TODO remove this class once real tasks will be implemented
 class LoopTask(Task):
 
     def __init__(self, socketio):
