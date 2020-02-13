@@ -1,4 +1,4 @@
-from src.domain.event_emitters import SequenceEventEmitter
+from src.domain.sequence import SequenceEventEmitter
 
 
 class SequenceSocketEventEmitter(SequenceEventEmitter):
