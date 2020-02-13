@@ -1,10 +1,16 @@
-class SequenceEventEmitter:
+from abc import ABC, abstractmethod
 
+
+class SequenceEventEmitter(ABC):
+
+    @abstractmethod
     def send_task_started(self, task_name):
-        raise NotImplementedError()
+        pass
 
+    @abstractmethod
     def send_sequence_ended(self):
-        raise NotImplementedError()
+        pass
 
+    @abstractmethod
     def send_error(self, task_name, message):
-        raise NotImplementedError()
+        pass
