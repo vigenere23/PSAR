@@ -10,13 +10,6 @@ class TaskContainer:
     def add_task(self, task):
         self.__tasks.append(task)
 
-    """
-    Executes all the tasks, from the first one specified.
-
-    :param first_task:
-    :type str:
-        The first task to execute. All the following tasks will also be executed.
-    """
     def execute(self, first_task=None):
         tasks = self.__crop_to_first_task(first_task)
 
@@ -26,12 +19,7 @@ class TaskContainer:
 
         self.__sequence_event_emitter.send_sequence_ended()
 
-    """
-    :param first_task:
-    :type str:
-        The first task to execute. All the following tasks will also be executed.
-    """
-    def __crop_to_first_task(self, first_task: str):
+    def __crop_to_first_task(self, first_task):
         if first_task is None:
             return self.__tasks
 
@@ -41,13 +29,6 @@ class TaskContainer:
 
         return self.__tasks[first_task_index:]
 
-    """
-    Executes a task and acts depending on the outcome / exceptions raised.
-
-    :param task:
-    :type Task:
-        The task to execute.
-    """
     def __execute_task(self, task):
         should_retry = True
 
