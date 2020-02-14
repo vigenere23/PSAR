@@ -1,10 +1,10 @@
-from flask_socketio import Namespace, emit
-from flask_socketio import socketio
+from flask_socketio import Namespace
 
-class SequenceNamespace(Namespace):
 
-    def __init__(self, namespace, sequence_runner):
-        super().__init__(namespace)
+class SequenceSocketEventHandler(Namespace):
+
+    def __init__(self, sequence_runner):
+        super().__init__('/sequence')
         self.__sequence_runner = sequence_runner
 
     def on_start(self):

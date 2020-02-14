@@ -11,19 +11,10 @@
     const stopSequence = () => sequenceSocket.emit('stop')
     
     socket.on('connect', () => {
-      const message = 'Hello, world!'
-      console.log('Connected!')
-      console.log(`Sending message '${message}'...`)
-      socket.emit('request_event', message)
-      console.log('Message sent!')
       sequenceSocket.emit('start')
       setTimeout(stopSequence, 1000)
     })
-
-    socket.on('response_event', response => {
-      console.log(`Received message '${response.data}' from server`)
-    })
-
+    
     socket.on('message', logMessage)
 
     sequenceSocket.on('task_started', (name) => {
