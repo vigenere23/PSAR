@@ -7,7 +7,7 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      working-directory: ./BaseStatio/backend
+      working-directory: ./BaseStation/backend
     strategy:
       matrix:
         python-version: [3.5]
