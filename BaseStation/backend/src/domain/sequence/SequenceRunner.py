@@ -14,4 +14,4 @@ class SequenceRunner:
 
     def stop_sequence(self):
         # TODO find a way to kill the sequence
-        raise InterruptedError("the sequence has been terminated")
+        pass
