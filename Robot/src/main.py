@@ -1,6 +1,6 @@
 import time
 from .config import socketio_config
-from .app import socketio
+from .app import socket
 from .context.interfaces import SocketHandlersContext
 
 
@@ -9,7 +9,7 @@ def connect_socket(connection_string, interval=2):
 
     while not connected:
         try:
-            socketio.connect(connection_string)
+            socket.connect(connection_string)
             connected = True
             print('Successfuly connected')
         except Exception as exception:
@@ -19,7 +19,7 @@ def connect_socket(connection_string, interval=2):
 
 
 if __name__ == '__main__':
-    SocketHandlersContext(socketio).register()
+    SocketHandlersContext(socket).register()
 
     connection_string = "http://{}:{}".format(socketio_config['host'], socketio_config['port'])
     connect_socket(connection_string)

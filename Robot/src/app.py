@@ -1,4 +1,3 @@
 import socketio
-import logging
 
-socketio = socketio.Client()
+socket = socketio.Client()
