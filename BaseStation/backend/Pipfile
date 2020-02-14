@@ -10,6 +10,8 @@ flask-socketio = "*"
 pyyaml = "*"
 eventlet = "*"
 gevent = "*"
+flake8 = "*"
+nose2 = "*"
 
 [requires]
 python_version = "3.5"
