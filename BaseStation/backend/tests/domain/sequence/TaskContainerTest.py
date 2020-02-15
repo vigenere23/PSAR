@@ -1,11 +1,7 @@
-from src.domain.sequence import TaskContainer, Task
+from src.domain.sequence import TaskContainer
 from tests import MockTestCase
+from .stubs import TaskStub
 from unittest.mock import Mock
-
-
-class TaskStub(Task):
-    def execute(self):
-        pass
 
 
 class TaskContainerTest(MockTestCase):

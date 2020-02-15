@@ -11,6 +11,7 @@ pyyaml = "*"
 eventlet = "*"
 gevent = "*"
 nose2 = "*"
+flake8 = "*"
 
 [requires]
 python_version = "3.5"
