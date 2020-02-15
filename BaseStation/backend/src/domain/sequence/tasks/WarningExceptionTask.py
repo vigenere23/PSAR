@@ -5,7 +5,6 @@ from ..exceptions import WarningException
 class WarningExceptionTask(Task):
 
     def __init__(self, socketio):
-        super().__init__('WarningException')
         self.__socketio = socketio
 
     def execute(self):

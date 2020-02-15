@@ -21,7 +21,7 @@ class TaskContainer:
         tasks = self.__crop_to_first_task(first_task)
 
         for task in tasks:
-            self.__sequence_event_emitter.send_task_started(task.name)
+            self.__sequence_event_emitter.send_task_started(task.name())
             self.__execute_task(task)
 
         self.__sequence_event_emitter.send_sequence_ended()
@@ -36,8 +36,8 @@ class TaskContainer:
             return self.__tasks
 
         first_task_index = next(
-            i for i, task in enumerate(self.__tasks) if task.name == first_task
-        )[0]
+            i for i, task in enumerate(self.__tasks) if task.name() == first_task
+        )
 
         return self.__tasks[first_task_index:]
 
@@ -57,10 +57,10 @@ class TaskContainer:
                 .format(exception)
             )
             self.__sequence_event_emitter.send_task_warning(
-                task.name, str(exception)
+                task.name(), str(exception)
             )
         except Exception as exception:
             self.__sequence_event_emitter.send_task_error(
-                task.name, str(exception)
+                task.name(), str(exception)
             )
             raise exception

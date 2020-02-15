@@ -28,7 +28,7 @@ class Retryable:
                 except WarningException as exception:
                     raise exception
                 except Exception:
-                    print('Retrying task - {} retries left'.format(i - 1))
+                    print('Retrying task : {} retries left'.format(i - 1))
 
             raise RetriesExceededException(self.number_of_retries)
         return wrapper
