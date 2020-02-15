@@ -1,4 +1,4 @@
-from .exceptions import WarningException, RetryException
+from .exceptions import WarningException
 
 
 class TaskContainer:
@@ -49,29 +49,18 @@ class TaskContainer:
         The task to execute.
     """
     def __execute_task(self, task):
-        should_retry = True
-
-        while should_retry:
-            should_retry = False
-            try:
-                task.execute()
-            except WarningException as exception:
-                print(
-                    "Warning: '{}'. Passing on to the next task."
-                    .format(exception)
-                )
-                self.__sequence_event_emitter.send_task_warning(
-                    task.name, str(exception)
-                )
-            except RetryException as exception:
-                print(
-                    "Retrying task '{}'. Message: '{}'"
-                    .format(task.name, exception)
-                )
-                self.__sequence_event_emitter.send_task_retry(task.name)
-                should_retry = True
-            except Exception as exception:
-                self.__sequence_event_emitter.send_task_error(
-                    task.name, str(exception)
-                )
-                raise exception
+        try:
+            task.execute()
+        except WarningException as exception:
+            print(
+                "Warning: '{}'. Passing on to the next task."
+                .format(exception)
+            )
+            self.__sequence_event_emitter.send_task_warning(
+                task.name, str(exception)
+            )
+        except Exception as exception:
+            self.__sequence_event_emitter.send_task_error(
+                task.name, str(exception)
+            )
+            raise exception

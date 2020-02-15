@@ -1,2 +1,2 @@
-from .RetryException import RetryException
+from .RetriesExceededException import RetriesExceededException
 from .WarningException import WarningException

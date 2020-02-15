@@ -18,7 +18,3 @@ class SequenceEventEmitter(ABC):
     @abstractmethod
     def send_task_error(self, task_name, message):
         pass
-
-    @abstractmethod
-    def send_task_retry(self, task_name):
-        pass
