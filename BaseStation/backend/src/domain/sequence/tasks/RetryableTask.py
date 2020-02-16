@@ -1,4 +1,5 @@
 from .. import Task, Retryable
+from ..exceptions import RetryException
 
 
 class RetryableTask(Task):
@@ -10,4 +11,4 @@ class RetryableTask(Task):
     def execute(self):
         self.__socketio.sleep(1)
         self.__socketio.send('... doing something')
-        raise RuntimeError()
+        raise RetryException(self.name())

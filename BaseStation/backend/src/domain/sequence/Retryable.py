@@ -1,5 +1,5 @@
 import logging
-from .exceptions import WarningException, RetriesExceededException
+from .exceptions import RetryException, RetriesExceededException
 
 
 class Retryable:
@@ -26,9 +26,7 @@ class Retryable:
             for i in range(self.number_of_retries + 1, 0, -1):
                 try:
                     return f(*args, **kwargs)
-                except WarningException as exception:
-                    raise exception
-                except Exception:
+                except RetryException:
                     logging.info('Retrying task : {} retries left'.format(i - 1))
 
             raise RetriesExceededException(self.number_of_retries)
