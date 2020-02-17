@@ -1,16 +1,22 @@
 from pinject import BindingSpec
-from .EventEmittersContext import EventEmittersContext
+from .SequenceContext import SequenceContext
+from src.argparser import args
 
 
 class MainContext(BindingSpec):
 
-    def __init__(self, event_type=None, event_instance=None, thread_starter=None):
+    def __init__(self, event_instance=None, thread_start=None, thread_sleep=None):
         super().__init__()
-        self.__event_type = event_type
         self.__event_instance = event_instance
-        self.__thread_starter = thread_starter
+        self.__thread_start = thread_start
+        self.__thread_sleep = thread_sleep
+
+    def configure(self, bind):
+        bind(args.event_type, to_instance=self.__event_instance)
+        bind('thread_start', to_instance=self.__thread_start)
+        bind('thread_sleep', to_instance=self.__thread_sleep)
 
     def dependencies(self):
         return [
-            EventEmittersContext(self.__event_type, self.__event_instance, self.__thread_starter)
+            SequenceContext()
         ]

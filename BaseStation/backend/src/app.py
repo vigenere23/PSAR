@@ -7,4 +7,4 @@ app.config['SECRET_KEY'] = flask_config['secret']
 app.env = flask_config['env']
 app.debug = flask_config['debug']
 
-socketio = SocketIO(app, cors_allowed_origins='*')
+socket = SocketIO(app, cors_allowed_origins='*')

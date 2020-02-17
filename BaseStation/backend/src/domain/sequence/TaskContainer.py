@@ -1,14 +1,15 @@
+from abc import ABC
 from .exceptions import WarningException
 
 
-class TaskContainer:
+class TaskContainer(ABC):
 
     def __init__(self, sequence_event_emitter):
         self.__sequence_event_emitter = sequence_event_emitter
-        self.tasks = []
+        self.__tasks = []
 
-    def add_task(self, task):
-        self.tasks.append(task)
+    def _add_task(self, task):
+        self.__tasks.append(task)
 
     """
     Executes all the tasks, from the first one specified.
@@ -33,13 +34,13 @@ class TaskContainer:
     """
     def __crop_to_first_task(self, first_task: str):
         if first_task is None:
-            return self.tasks
+            return self.__tasks
 
         first_task_index = next(
-            i for i, task in enumerate(self.tasks) if task.name() == first_task
+            i for i, task in enumerate(self.__tasks) if task.name() == first_task
         )
 
-        return self.tasks[first_task_index:]
+        return self.__tasks[first_task_index:]
 
     """
     Executes a task and acts depending on the outcome / exceptions raised.
