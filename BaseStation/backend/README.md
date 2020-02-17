@@ -2,6 +2,8 @@
 
 ## Before starting
 
+**PLEASE** have a look at the [wiki](https://github.com/DODRO35/design_3_logiciel/wiki), it is quite usefull!
+
 ### Folder structure
 
 - `/src` for the code in python
