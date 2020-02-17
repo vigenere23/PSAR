@@ -1,10 +1,9 @@
-pyenv install $(cat .python-version)
-pyenv local $(cat .python-version)
 cd BaseStation/backend
-pipenv --rm
-pipenv install
+source scripts/setup.sh
 cd -
 cd Robot
-pipenv --rm
-pipenv install
+source scripts/setup.sh
+cd -
+cd BaseStation/frontend
+yarn
 cd -
