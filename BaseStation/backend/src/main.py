@@ -6,13 +6,17 @@ monkey.patch_all()
 from pinject import new_object_graph
 from .app import app, socketio
 from .config import socketio_config
-from .context import MainContext, EventHandlersRegisterer, TaskContainerInitializer
+from .context import MainContext, SocketApiContext, TaskContainerInitializer
 
-__context = MainContext(event_type='socket', event_instance=socketio)
+__context = MainContext(
+    event_type='socket',
+    event_instance=socketio,
+    thread_starter=socketio.start_background_task
+)
 
 __object_graph = new_object_graph(binding_specs=[__context])
-EventHandlersRegisterer(__object_graph, socketio.on_namespace)
-TaskContainerInitializer(__object_graph, socketio).populate_tasks('main')
+TaskContainerInitializer(__object_graph).populate_tasks('main')
+SocketApiContext(__object_graph, socketio.on_namespace).register_routes()
 
 if __name__ == '__main__':
     socketio.run(

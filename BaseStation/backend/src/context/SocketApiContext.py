@@ -1,7 +1,7 @@
-from src.interfaces.socket import SequenceSocketEventHandler
+from src.interfaces.socket_api import SequenceSocketEventHandler
 
 
-class EventHandlersRegisterer:
+class SocketApiContext:
 
     def __init__(self, object_graph, register_fn):
         self.object_graph = object_graph

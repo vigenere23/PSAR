@@ -1,3 +1,3 @@
 from .MainContext import MainContext
-from .EventHandlersRegisterer import EventHandlersRegisterer
+from .SocketApiContext import SocketApiContext
 from .TaskContainerInitializer import TaskContainerInitializer

@@ -4,12 +4,13 @@ from .EventEmittersContext import EventEmittersContext
 
 class MainContext(BindingSpec):
 
-    def __init__(self, event_type=None, event_instance=None):
+    def __init__(self, event_type=None, event_instance=None, thread_starter=None):
         super().__init__()
         self.__event_type = event_type
         self.__event_instance = event_instance
+        self.__thread_starter = thread_starter
 
     def dependencies(self):
         return [
-            EventEmittersContext(self.__event_type, self.__event_instance)
+            EventEmittersContext(self.__event_type, self.__event_instance, self.__thread_starter)
         ]
