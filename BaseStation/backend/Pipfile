@@ -10,12 +10,11 @@ flask-socketio = "*"
 pyyaml = "*"
 eventlet = "*"
 gevent = "*"
-flake8 = "*"
 nose2 = "*"
+flake8 = "*"
 
 [requires]
 python_version = "3.5"
 
 [dev-packages]
-rope = "*"
 flake8 = "*"

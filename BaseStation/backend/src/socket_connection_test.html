@@ -31,9 +31,5 @@
     sequenceSocket.on('task_error', (error) => {
       console.error(`task: '${error.task}', error: '${error.message}'`)
     })
-
-    sequenceSocket.on('task_retry', (task_name) => {
-      console.log(`retrying '${task_name}'`)
-    })
   </script>
 </html>

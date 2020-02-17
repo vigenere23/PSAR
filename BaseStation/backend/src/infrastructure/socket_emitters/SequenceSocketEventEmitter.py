@@ -28,6 +28,3 @@ class SequenceSocketEventEmitter(SequenceEventEmitter):
             {'task': task_name, 'message': message},
             namespace=self.__namespace
         )
-
-    def send_task_retry(self, task_name):
-        self.__socketio.emit('task_retry', task_name, namespace=self.__namespace)
