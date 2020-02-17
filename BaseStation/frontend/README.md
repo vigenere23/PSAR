@@ -1,4 +1,4 @@
-# frontend
+# Design 3 - The Interface
 
 ## Project setup
 ```

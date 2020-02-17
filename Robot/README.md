@@ -1,6 +1,8 @@
 # Design 3 - The Robot
 
-## File Architecture
+## Before starting
+
+### Folder structure
 
 - `/src` for the code in python
 - `/scripts` for that kind of command-line interface stuff
@@ -9,22 +11,33 @@
 - `/doc` for most documentation
 - `/apidoc` for the API docs.
 
-## How to install
+## Setup
 
-We will use pipfile to facilitate python environment here is a [guide on how to use pipenv](https://realpython.com/pipenv-guide/)
+We will use pipfile to facilitate python environment. Here is a [guide on how to use pipenv](https://realpython.com/pipenv-guide/).
 
-### The basics :
+### Installation
 
-- First install python on your computer, for now you need to install python version 3.5 on your device
-- In the root directory use the command `pipenv install` to install a python env and all required dependencies
-- done
+1. First, install python on your computer. For now, you will need to install python version 3.5 on your device.
+2. In the root directory, use the command `pipenv install` to install a python virtual environment and all required dependencies.
 
-### Nice to know :
+If you are on Linux (or Mac?) and use `pyenv`, you can simply `source` the `setup.sh` script.
 
-- When installing a new module use `pipenv install 'module name'` instead of the traditionnal `pip install 'module name'` this will add the module in the pipfile as a dependency
+```bash
+source scripts/setup.sh
+```
 
-## Run
+### Usage
+
+- When installing a new module, use `pipenv install <module _name'>` instead of the traditionnal `pip install '<module _name'>` . This will add the module to the list of dependencies.
+
+## Running
 
 ```bash
 python -m src.main
+```
+
+## Testing
+
+```bash
+python -m tests.all
 ```
