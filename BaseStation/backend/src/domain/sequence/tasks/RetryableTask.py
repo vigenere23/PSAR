@@ -4,11 +4,11 @@ from ..exceptions import RetryException
 
 class RetryableTask(Task):
 
-    def __init__(self, socketio):
-        self.__socketio = socketio
+    def __init__(self, socket):
+        self.__socket = socket
 
     @Retryable(2)
     def execute(self):
-        self.__socketio.sleep(1)
-        self.__socketio.send('... doing something')
+        self.__socket.sleep(1)
+        self.__socket.send('... doing something')
         raise RetryException(self.name())
