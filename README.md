@@ -6,7 +6,7 @@ The complete project is seperated into 3 independant sub-projects :
 2. [BaseStation (backend)](./BaseStation/backend/)
 3. [BaseStation (frontend)](./BaseStation/frontend/)
 
-For info on how to setup them, please each their `README`.
+For info on how to setup them, please read their `README`.
 
 For more general info about the project, the standards and the tools, **PLEASE** visit the [wiki](https://github.com/DODRO35/design_3_logiciel/wiki)!
 
