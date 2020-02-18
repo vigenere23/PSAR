@@ -1,29 +1,36 @@
-# frontend
+# Design 3 - The Interface
 
 ## Project setup
+
 ```
 yarn install
 ```
 
 ### Compiles and hot-reloads for development
+
 ```
 yarn serve
 ```
 
 ### Compiles and minifies for production
+
 ```
 yarn build
 ```
 
 ### Lints and fixes files
+
 ```
 yarn lint
 ```
 
 ### Customize configuration
+
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Helpful informations
+
+**PLEASE** have a look at the [wiki](https://github.com/DODRO35/design_3_logiciel/wiki), it is quite usefull!
 
 ### Structure
 

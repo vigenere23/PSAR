@@ -1,36 +1,19 @@
-# Logiciel
+# Welcome to the Design 3 software project of Team 8! (the best one)
 
-Le projet utilise `pipenv` pour la gestion des dépendance de Python sur la version 3.5.x.
+The complete project is seperated into 3 independant sub-projects :
 
-## Setup Python
+1. [Robot](./Robot/)
+2. [BaseStation (backend)](./BaseStation/backend/)
+3. [BaseStation (frontend)](./BaseStation/frontend/)
 
-### Linux
+For info on how to setup them, please read their `README`.
 
-```bash
-source setup.sh
-```
+For more general info about the project, the standards and the tools, **PLEASE** visit the [wiki](https://github.com/DODRO35/design_3_logiciel/wiki)!
 
-> Affichera une erreur si `pyenv` n'est pas installé, mais ce n'est pas grave.
+## Quick setup
 
-### Autre
-
-Exécuter `pipenv install` dans `/BaseStation/backend` et `/Robot`.
-
-## Setup frontend
+If you are on Linux (or Mac?) and use `pyenv`, you can simply `source` the `setup.sh` script.
 
 ```bash
-cd BaseStation/frontend
-yarn
+source scripts/setup.sh
 ```
-
-## Start BaseStation (frontend)
-
-```bash
-yarn serve
-```
-
-
-## Start BaseStation (backend)
-
-
-## Start Robot
