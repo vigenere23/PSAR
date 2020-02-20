@@ -37,7 +37,7 @@ We will use pipfile to facilitate python environment. Here is a [guide on how to
 ## Running
 
 ```bash
-python -m src.main
+pipenv run nose2
 ```
 
 ## Testing
