@@ -7,11 +7,11 @@ name = "pypi"
 opencv-contrib-python = "==3.4.4.*"
 "python-socketio[client]" = "*"
 pyyaml = "*"
-flake8 = "*"
 nose2 = "*"
+flake8 = "*"
+coverage = "*"
 
 [requires]
 python_version = "3.6"
 
 [dev-packages]
-flake8 = "*"

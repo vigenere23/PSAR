@@ -38,8 +38,16 @@ source scripts/setup.sh
 python -m src.main
 ```
 
-## Testing
+## Tests
+
+### Running
 
 ```bash
-python -m tests.all
+pipenv run nose2
+```
+
+### Coverage
+
+```bash
+pipenv run coverage run && pipenv run coverage report
 ```

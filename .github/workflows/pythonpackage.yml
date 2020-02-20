@@ -40,6 +40,12 @@ jobs:
         pipenv run nose2
       working-directory: ${{env.working-directory}}
 
+    - name: Code coverage
+      run: |
+        pipenv run coverage run
+        pipenv run coverage report
+      working-directory: ${{env.working-directory}}
+
   Test_Robot:
 
     runs-on: ubuntu-latest
@@ -75,4 +81,10 @@ jobs:
     - name: Test with nose
       run: |
         pipenv run nose2
+      working-directory: ${{env.working-directory}}
+
+    - name: Code coverage
+      run: |
+        pipenv run coverage run
+        pipenv run coverage report
       working-directory: ${{env.working-directory}}
