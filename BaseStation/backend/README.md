@@ -32,7 +32,7 @@ We will use pipfile to facilitate python environment. Here is a [guide on how to
 1. First, install python on your computer. For now, you will need to install python version 3.5 on your device.
 2. In the root directory, use the command `pipenv install` to install a python virtual environment and all required dependencies.
 
-If you are on Linux (or Mac?) and use `pyenv`, you can simply `source` the `setup.sh` script.
+If you are on Linux (or Mac?), you can simply `source` the `setup.sh` script.
 
 ```bash
 source scripts/setup.sh
