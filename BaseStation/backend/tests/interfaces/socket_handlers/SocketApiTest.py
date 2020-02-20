@@ -1,5 +1,5 @@
 import unittest
-from src.app import app, socketio
+from src.app import app, socket
 
 
 class SocketApiTest(unittest.TestCase):
