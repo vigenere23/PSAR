@@ -1,13 +1,14 @@
+from abc import ABC
 from .exceptions import WarningException
 
 
-class TaskContainer:
+class TaskContainer(ABC):
 
     def __init__(self, sequence_event_emitter):
         self.__sequence_event_emitter = sequence_event_emitter
         self.__tasks = []
 
-    def add_task(self, task):
+    def _add_task(self, task):
         self.__tasks.append(task)
 
     """

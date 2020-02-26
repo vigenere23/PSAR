@@ -3,14 +3,22 @@
 from gevent import monkey
 monkey.patch_all()
 
-from .app import app, socketio
+from .app import app, socket
 from .config import socketio_config
-from .context.interfaces.socket_handlers import SocketHandlersContext
+from pinject import new_object_graph
+from .context import MainContext, SocketApiContext
 
-SocketHandlersContext(socketio).register()
+__context = MainContext(
+    event_instance=socket,
+    thread_start=socket.start_background_task,
+    thread_sleep=socket.sleep
+)
+
+__object_graph = new_object_graph(binding_specs=[__context])
+SocketApiContext(__object_graph, socket.on_namespace).register_routes()
 
 if __name__ == '__main__':
-    socketio.run(
+    socket.run(
         app,
         host=socketio_config['host'],
         port=socketio_config['port']

@@ -1,7 +1,7 @@
 class RobotEventEmitter:
 
-    def __init__(self, socketio):
-        self.__socketio = socketio
+    def __init__(self, socket):
+        self.__socket = socket
 
     # TODO
     # send_move()
