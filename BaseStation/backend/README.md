@@ -45,7 +45,7 @@ source scripts/setup.sh
 ## Running
 
 ```bash
-python -m src.main
+pipenv run nose2
 ```
 
 ## Testing

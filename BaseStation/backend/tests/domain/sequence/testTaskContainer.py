@@ -4,17 +4,25 @@ from .stubs import TaskStub
 from unittest.mock import Mock
 
 
+class TaskContainerStub(TaskContainer):
+
+    def __init__(self, sequence_event_emitter, tasks):
+        super().__init__(sequence_event_emitter)
+
+        for task in tasks:
+            self._add_task(task)
+
+
 class TaskContainerTest(MockTestCase):
 
     def setUp(self):
-        sequence_event_emitter = Mock()
-        self.task_container = TaskContainer(sequence_event_emitter)
+        self.sequence_event_emitter = Mock()
 
     def test_when_executing_without_first_task_it_executes_all_tasks(self):
         tasks = self.__create_task_stubs(2)
-        self.__add_tasks_to_container(tasks)
+        task_container = TaskContainerStub(self.sequence_event_emitter, tasks)
 
-        self.task_container.execute()
+        task_container.execute()
 
         for task in tasks:
             self.assertCalledOnce(task.execute)
@@ -22,9 +30,9 @@ class TaskContainerTest(MockTestCase):
     def test_when_executing_with_first_task_it_executes_only_from_first_task(self):
         tasks = self.__create_task_stubs(3)
         tasks[1].name.return_value = 'FirstTask'
-        self.__add_tasks_to_container(tasks)
+        task_container = TaskContainerStub(self.sequence_event_emitter, tasks)
 
-        self.task_container.execute(first_task='FirstTask')
+        task_container.execute(first_task='FirstTask')
 
         self.assertNotCalled(tasks[0].execute)
         self.assertCalledOnce(tasks[1].execute)
@@ -32,7 +40,3 @@ class TaskContainerTest(MockTestCase):
 
     def __create_task_stubs(self, number_of_tasks):
         return [Mock(wraps=TaskStub()) for _ in range(number_of_tasks)]
-
-    def __add_tasks_to_container(self, tasks):
-        for task in tasks:
-            self.task_container.add_task(task)
