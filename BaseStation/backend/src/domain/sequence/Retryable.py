@@ -15,7 +15,7 @@ class Retryable:
         Note that the task will be run (number_of_times + 1) times in total.
     """
     def __init__(self, number_of_retries: int):
-        self.number_of_retries = number_of_retries
+        self.__number_of_retries = number_of_retries
 
     """
     :raise RetriesExceededException: if the number of retries has been exceeded
@@ -23,11 +23,11 @@ class Retryable:
     def __call__(self, f):
         def wrapper(*args, **kwargs):
 
-            for i in range(self.number_of_retries + 1, 0, -1):
+            for i in range(self.__number_of_retries + 1, 0, -1):
                 try:
                     return f(*args, **kwargs)
                 except RetryException:
                     logging.info('Retrying task : {} retries left'.format(i - 1))
 
-            raise RetriesExceededException(self.number_of_retries)
+            raise RetriesExceededException(self.__number_of_retries)
         return wrapper

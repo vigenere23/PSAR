@@ -2,7 +2,7 @@ from .. import TaskContainer
 from src.domain.sequence import SequenceEventEmitter
 
 
-class MainTaskContainer(TaskContainer):
+class RobotTestTaskContainer(TaskContainer):
 
     def __init__(
         self,
@@ -11,4 +11,4 @@ class MainTaskContainer(TaskContainer):
     ):
         super().__init__(global_context, sequence_event_emitter)
 
-        # TODO add tasks for the real sequence here
+        # TODO add tasks for testing robot here

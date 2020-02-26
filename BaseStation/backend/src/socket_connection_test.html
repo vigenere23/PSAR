@@ -9,9 +9,12 @@
 
     const logMessage = message => console.log(message)
     const stopSequence = () => sequenceSocket.emit('stop')
+    const pauseSequence = () => sequenceSocket.emit('pause')
+    const resumeSequence = () => sequenceSocket.emit('resume')
     
     socket.on('connect', () => {
       sequenceSocket.emit('start')
+      setTimeout(resumeSequence, 5000)
     })
     
     socket.on('message', logMessage)

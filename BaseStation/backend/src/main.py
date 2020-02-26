@@ -4,6 +4,7 @@ from gevent import monkey
 monkey.patch_all()
 
 from .app import app, socket
+from .domain import GlobalContext
 from .config import socketio_config
 from pinject import new_object_graph
 from .context import MainContext, SocketApiContext
@@ -11,7 +12,8 @@ from .context import MainContext, SocketApiContext
 __context = MainContext(
     event_instance=socket,
     thread_start=socket.start_background_task,
-    thread_sleep=socket.sleep
+    thread_sleep=socket.sleep,
+    global_context=GlobalContext(socket.sleep)
 )
 
 __object_graph = new_object_graph(binding_specs=[__context])

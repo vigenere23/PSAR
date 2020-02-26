@@ -8,10 +8,16 @@ class SequenceSocketEventHandler(Namespace):
         self.__sequence_runner = sequence_runner
 
     def on_start(self):
-        self.__sequence_runner.start_sequence()
+        self.__sequence_runner.start()
 
     def on_start_at_task(self, task):
-        self.__sequence_runner.start_sequence(first_task=task)
+        self.__sequence_runner.start(first_task=task)
 
     def on_stop(self):
-        self.__sequence_runner.stop_sequence()
+        self.__sequence_runner.stop()
+
+    def on_pause(self):
+        self.__sequence_runner.pause()
+
+    def on_resume(self):
+        self.__sequence_runner.resume()

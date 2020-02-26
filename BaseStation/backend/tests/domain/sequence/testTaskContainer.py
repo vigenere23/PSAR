@@ -7,7 +7,7 @@ from unittest.mock import Mock
 class TaskContainerStub(TaskContainer):
 
     def __init__(self, sequence_event_emitter, tasks):
-        super().__init__(sequence_event_emitter)
+        super().__init__(Mock(), sequence_event_emitter)
 
         for task in tasks:
             self._add_task(task)

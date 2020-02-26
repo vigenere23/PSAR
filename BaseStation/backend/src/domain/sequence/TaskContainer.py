@@ -1,10 +1,12 @@
 from abc import ABC
+from src.domain import GlobalContext
 from .exceptions import WarningException
 
 
 class TaskContainer(ABC):
 
-    def __init__(self, sequence_event_emitter):
+    def __init__(self, global_context: GlobalContext, sequence_event_emitter):
+        self.__global_context = global_context
         self.__sequence_event_emitter = sequence_event_emitter
         self.__tasks = []
 
@@ -22,6 +24,7 @@ class TaskContainer(ABC):
         tasks = self.__crop_to_first_task(first_task)
 
         for task in tasks:
+            self.__global_context.wait_until_resumed()
             self.__sequence_event_emitter.send_task_started(task.name())
             self.__execute_task(task)
 
