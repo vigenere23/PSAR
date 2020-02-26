@@ -12,7 +12,7 @@ For more general info about the project, the standards and the tools, **PLEASE**
 
 ## Quick setup
 
-If you are on Linux (or Mac?) and use `pyenv`, you can simply `source` the `setup.sh` script.
+If you are on Linux (or Mac?), you can simply `source` the `setup.sh` script.
 
 ```bash
 source scripts/setup.sh
