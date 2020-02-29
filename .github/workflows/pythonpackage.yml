@@ -10,7 +10,7 @@ jobs:
       working-directory: ./BaseStation/backend
     strategy:
       matrix:
-        python-version: [3.6]
+        python-version: [3.8]
 
     steps:
     - uses: actions/checkout@v2
@@ -53,7 +53,7 @@ jobs:
       working-directory: ./Robot
     strategy:
       matrix:
-        python-version: [3.6]
+        python-version: [3.8]
 
     steps:
     - uses: actions/checkout@v2
