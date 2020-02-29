@@ -1,5 +1,6 @@
-from src.domain.sequence import Retryable, Task
-from src.domain.sequence.exceptions import RetryException
+from src.domain.sequence.Retryable import Retryable
+from src.domain.sequence.Task import Task
+from src.domain.sequence.exceptions.RetryException import RetryException
 
 NUMBER_OF_RETRIES = 3
 

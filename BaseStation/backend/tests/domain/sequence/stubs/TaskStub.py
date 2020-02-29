@@ -1,4 +1,4 @@
-from src.domain.sequence import Task
+from src.domain.sequence.Task import Task
 
 
 class TaskStub(Task):

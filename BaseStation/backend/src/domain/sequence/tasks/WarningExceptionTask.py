@@ -1,15 +1,20 @@
-from .. import Task
-from ..exceptions import WarningException
+from injector import inject
+from src.domain.GeneralEventEmitter import GeneralEventEmitter
+from src.domain.ThreadManager import ThreadManager
+from src.domain.sequence.Task import Task
+from src.domain.sequence.exceptions.WarningException import WarningException
 
 
 class WarningExceptionTask(Task):
 
-    def __init__(self, socket):
-        self.__socket = socket
+    @inject
+    def __init__(self, thread_manager: ThreadManager, general_event_emitter: GeneralEventEmitter):
+        self.__thread_manager = thread_manager
+        self.__general_event_emitter = general_event_emitter
 
     def execute(self):
-        self.__socket.sleep(1)
-        self.__socket.send('... doing somethig')
+        self.__thread_manager.sleep(1)
+        self.__general_event_emitter.send_message('... doing somethig')
         raise WarningException(
             "Can no longer see puck - maybe the robot is colliding with it?"
         )

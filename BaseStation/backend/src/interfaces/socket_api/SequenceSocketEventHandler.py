@@ -1,9 +1,12 @@
+from injector import inject
 from flask_socketio import Namespace
+from src.domain.sequence.SequenceRunner import SequenceRunner
 
 
 class SequenceSocketEventHandler(Namespace):
 
-    def __init__(self, sequence_runner):
+    @inject
+    def __init__(self, sequence_runner: SequenceRunner):
         super().__init__('/sequence')
         self.__sequence_runner = sequence_runner
 

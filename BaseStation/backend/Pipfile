@@ -13,7 +13,7 @@ gevent = "*"
 nose2 = "*"
 flake8 = "*"
 coverage = "*"
-pinject = "*"
+injector = "*"
 
 [requires]
 python_version = "3.8"

@@ -1,7 +1,12 @@
+from injector import inject
+from src.domain.ThreadManager import ThreadManager
+
+
 class GlobalContext:
 
-    def __init__(self, thread_sleep):
-        self.__thread_sleep = thread_sleep
+    @inject
+    def __init__(self, thread_manager: ThreadManager):
+        self.__thread_manager = thread_manager
         self.__paused = False
 
     def pause(self):
@@ -14,4 +19,4 @@ class GlobalContext:
 
     def wait_until_resumed(self):
         while self.__paused:
-            self.__thread_sleep(1)
+            self.__thread_manager.sleep(1)

@@ -1,7 +1,7 @@
-from src.domain.sequence import TaskContainer
 from tests import MockTestCase
-from .stubs import TaskStub
 from unittest.mock import Mock
+from src.domain.sequence.TaskContainer import TaskContainer
+from .stubs import TaskStub
 
 
 class TaskContainerStub(TaskContainer):

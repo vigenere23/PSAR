@@ -1,9 +1,12 @@
-from src.domain.sequence import SequenceEventEmitter
+from injector import inject
+from flask_socketio import SocketIO
+from src.domain.sequence.SequenceEventEmitter import SequenceEventEmitter
 
 
 class SequenceSocketEventEmitter(SequenceEventEmitter):
 
-    def __init__(self, socket):
+    @inject
+    def __init__(self, socket: SocketIO):
         self.__socket = socket
         self.__namespace = '/sequence'
 

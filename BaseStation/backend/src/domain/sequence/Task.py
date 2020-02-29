@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from .exceptions import RetryException
+from src.domain.sequence.exceptions.RetryException import RetryException
 
 
 class Task(ABC):

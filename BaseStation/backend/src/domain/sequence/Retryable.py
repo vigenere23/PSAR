@@ -1,5 +1,6 @@
 import logging
-from .exceptions import RetryException, RetriesExceededException
+from src.domain.sequence.exceptions.RetryException import RetryException
+from src.domain.sequence.exceptions.RetriesExceededException import RetriesExceededException
 
 
 class Retryable:

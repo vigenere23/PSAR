@@ -1,11 +1,12 @@
 from abc import ABC
-from src.domain import GlobalContext
-from .exceptions import WarningException
+from src.domain.GlobalContext import GlobalContext
+from src.domain.sequence.SequenceEventEmitter import SequenceEventEmitter
+from src.domain.sequence.exceptions.WarningException import WarningException
 
 
 class TaskContainer(ABC):
 
-    def __init__(self, global_context: GlobalContext, sequence_event_emitter):
+    def __init__(self, global_context: GlobalContext, sequence_event_emitter: SequenceEventEmitter):
         self.__global_context = global_context
         self.__sequence_event_emitter = sequence_event_emitter
         self.__tasks = []

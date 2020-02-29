@@ -1,13 +1,18 @@
-from .. import TaskContainer
-from src.domain.sequence import SequenceEventEmitter
-from src.domain.sequence.tasks import PausingTask, RetryableTask, WarningExceptionTask
+from injector import inject
+from src.domain.GlobalContext import GlobalContext
+from src.domain.sequence.SequenceEventEmitter import SequenceEventEmitter
+from src.domain.sequence.tasks.PausingTask import PausingTask
+from src.domain.sequence.tasks.RetryableTask import RetryableTask
+from src.domain.sequence.tasks.WarningExceptionTask import WarningExceptionTask
+from src.domain.sequence.TaskContainer import TaskContainer
 
 
 class SpecialTasksTaskContainer(TaskContainer):
 
+    @inject
     def __init__(
         self,
-        global_context,
+        global_context: GlobalContext,
         sequence_event_emitter: SequenceEventEmitter,
         pausing_task: PausingTask,
         warning_exception_task: WarningExceptionTask,

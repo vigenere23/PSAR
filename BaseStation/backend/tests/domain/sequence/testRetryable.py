@@ -1,6 +1,6 @@
 from unittest import TestCase
+from src.domain.sequence.exceptions.RetriesExceededException import RetriesExceededException
 from .stubs.RetryableTaskStub import RetryableTaskStub, NUMBER_OF_RETRIES
-from src.domain.sequence.exceptions import RetriesExceededException
 
 
 class RetryableTest(TestCase):

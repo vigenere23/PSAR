@@ -1,18 +1,14 @@
-from pinject import BindingSpec
+from injector import Module, Binder
 from src.argparser import args
-from src.domain.sequence import TaskContainerFactory
-from .EventEmittersContext import EventEmittersContext
+from src.domain.sequence.TaskContainer import TaskContainer
+from src.domain.sequence.TaskContainerFactory import TaskContainerFactory
 
 
-class SequenceContext(BindingSpec):
+class SequenceContext(Module):
 
-    def configure(self, bind, require):
+    def configure(self, binder: Binder):
         if args.sequence:
-            bind(
-                'task_container',
-                to_class=TaskContainerFactory().get_class(args.sequence))
-
-    def dependencies(self):
-        return [
-            EventEmittersContext()
-        ]
+            binder.bind(
+                TaskContainer,
+                to=TaskContainerFactory().get_class(args.sequence)
+            )
