@@ -3,6 +3,9 @@ from src.context.ThreadManagerContext import ThreadManagerContext
 from src.context.SequenceContext import SequenceContext
 from src.context.EventEmittersContext import EventEmittersContext
 from src.context.EventInstanceContext import EventInstanceContext
+from src.domain.GlobalContext import GlobalContext
+from src.domain.ThreadManager import ThreadManager
+from src.infrastructure.thread_managers.SocketThreadManager import SocketThreadManager
 
 
 class MainContext(Module):
@@ -13,6 +16,13 @@ class MainContext(Module):
 
     def configure(self, binder: Binder):
         binder.install(EventInstanceContext(self.__event_instance))
-        binder.install(ThreadManagerContext())
+        # binder.install(ThreadManagerContext())
+
+        # TODO fix this -> global_context seems to exists once PER THREAD
+        socket_thread_manager = SocketThreadManager(self.__event_instance)
+        global_context = GlobalContext(socket_thread_manager)
+        binder.bind(ThreadManager, to=socket_thread_manager)
+        binder.bind(GlobalContext, to=global_context)
+
         binder.install(EventEmittersContext())
         binder.install(SequenceContext())

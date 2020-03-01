@@ -1,6 +1,6 @@
 from src.domain.sequence.task_containers.MainTaskContainer import MainTaskContainer
-from src.domain.sequence.task_containers.SpecialTasksTaskContainer import SpecialTasksTaskContainer
-from src.domain.sequence.task_containers.RobotTestTaskContainer import RobotTestTaskContainer
+from src.domain.sequence.task_containers.dummy.SpecialTasksTaskContainer import SpecialTasksTaskContainer
+from src.domain.sequence.task_containers.dummy.RobotTestTaskContainer import RobotTestTaskContainer
 
 
 class TaskContainerFactory:

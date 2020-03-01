@@ -10,4 +10,4 @@ class GeneralSocketEventEmitter(GeneralEventEmitter):
         self.__socket = socket
 
     def send_message(self, message):
-        self.__socket.emit(message)
+        self.__socket.emit('message', message)

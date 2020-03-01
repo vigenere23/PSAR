@@ -3,7 +3,10 @@ command_line = -m nose2
 source = src
 omit =
     src/main.py
+    src/app.py
+    src/argparser.py
     src/setup/*
     src/config/*
     src/context/*
     **/__init__.py
+    **/dummy/*

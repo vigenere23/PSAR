@@ -1,9 +1,9 @@
 from injector import inject
 from src.domain.GlobalContext import GlobalContext
 from src.domain.sequence.SequenceEventEmitter import SequenceEventEmitter
-from src.domain.sequence.tasks.PausingTask import PausingTask
-from src.domain.sequence.tasks.RetryableTask import RetryableTask
-from src.domain.sequence.tasks.WarningExceptionTask import WarningExceptionTask
+from src.domain.sequence.tasks.dummy.PausingTask import PausingTask
+from src.domain.sequence.tasks.dummy.RetryableTask import RetryableTask
+from src.domain.sequence.tasks.dummy.WarningExceptionTask import WarningExceptionTask
 from src.domain.sequence.TaskContainer import TaskContainer
 
 
