@@ -7,4 +7,12 @@
 <style lang="scss">
 @import '~styles/reset';
 @include reset;
+
+  #app {
+    background: pink;
+  }
 </style>
+
+<script>
+
+</script>

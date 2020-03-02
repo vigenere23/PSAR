@@ -1,9 +1,8 @@
 <template>
   <div class="steps">
-    <p v-for="(step, i) in previousSteps" :key="-1-i">
+    <p v-for="(step, i) in previousSteps" :key="-1-i" class="previous">
       {{ `✓ ${step}` }}
     </p>
-
     <p class="current">{{ `➜ ${ongoingStep}` }}</p>
 
     <p v-for="(step, i) in upcomingSteps" :key="i">
@@ -34,13 +33,11 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~styles/fonts';
+@import '../assets/scss/fonts';
 
 .steps {
   font-family: $monospace;
   padding: 8px;
-  height: 9em;
-  width: 500px;
   overflow: auto;
 
   p {
@@ -51,5 +48,14 @@ export default {
   .current {
     font-weight: 700;
   }
+
+  .previous {
+    color: grey;
+  }
+
+  button {
+    align-self: end;
+  }
+
 }
 </style>
