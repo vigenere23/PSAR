@@ -10,3 +10,6 @@ omit =
     src/context/*
     **/__init__.py
     **/dummy/*
+    **/data_classes/*
+    **/types.py
+    src/assets/*
