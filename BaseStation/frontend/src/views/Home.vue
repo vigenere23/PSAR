@@ -1,5 +1,6 @@
 <template>
   <div class="home-page">
+    <h1>This is the home page</h1>
     <steps></steps>
     <camera class="RCamera"></camera>
     <resistance></resistance>
@@ -95,5 +96,4 @@ export default {
     background: green;
     border: solid;
   }
-
 </style>

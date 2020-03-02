@@ -8,11 +8,17 @@
 @import '~styles/reset';
 @include reset;
 
-  #app {
-    background: pink;
-  }
+#app {
+  background: pink;
+}
 </style>
 
 <script>
+import { connect } from './api/SequenceSocketEventEmitter'
 
+export default {
+  beforeMount () {
+    connect()
+  }
+}
 </script>

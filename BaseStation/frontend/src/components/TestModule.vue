@@ -2,71 +2,77 @@
     <div class="testModule">
       <div class="arrowContainer">
         <div class="void"></div>
-        <div class="arrow" id="arrowUp" @mousedown="goForward" @mouseup="stop"></div>
+        <div class="arrow" id="arrowUp" @mousedown="goForward" @mouseup="stopForward"></div>
         <div class="void"></div>
-        <div class="arrow" id="arrowLeft" @mousedown="goLeft" @mouseup="stop"></div>
+        <div class="arrow" id="arrowLeft" @mousedown="goLeft" @mouseup="stopLeft"></div>
         <div class="void"></div>
-        <div class="arrow" id="arrowRight" @mousedown="goRight" @mouseup="stop"></div>
-        <div class="void">{{unit}}</div>
-        <div class="arrow" id="arrowDown" @mousedown="goBack" @mouseup="stop"></div>
+        <div class="arrow" id="arrowRight" @mousedown="goRight" @mouseup="stopRight"></div>
+        <div class="void"></div>
+        <div class="arrow" id="arrowDown" @mousedown="goBack" @mouseup="stopBack"></div>
         <div class="void"></div>
       </div>
     </div>
 </template>
 
 <script>
+import { move } from '../api/SequenceSocketEventEmitter'
 
 export default {
   name: 'TestModule',
   data () {
     return {
       interval: false,
-      unit: 0
+      unit: 0,
+      y: 0,
+      x: 0,
+      speed: 25
     }
   },
   methods: {
-
     goLeft () {
-      if (!this.interval) {
-        this.interval = setInterval(() => this.unit++, 30)
-      }
+      this.x -= this.speed
+      move(this.x, this.y)
     },
-
     goRight () {
-      if (!this.interval) {
-        this.interval = setInterval(() => this.unit++, 30)
-      }
+      this.x += this.speed
+      move(this.x, this.y)
+      console.log('right')
     },
-
     goForward () {
-      if (!this.interval) {
-        this.interval = setInterval(() => this.unit++, 30)
-      }
+      this.y += this.speed
+      move(this.x, this.y)
     },
-
     goBack () {
-      if (!this.interval) {
-        this.interval = setInterval(() => this.unit++, 30)
-      }
+      this.y -= this.speed
+      move(this.x, this.y)
     },
-
-    stop () {
-      clearInterval(this.interval)
-      this.interval = false
-      this.unit = 0
+    stopLeft () {
+      this.x += this.speed
+      move(this.x, this.y)
+    },
+    stopRight () {
+      this.x -= this.speed
+      move(this.x, this.y)
+    },
+    stopBack () {
+      this.y += this.speed
+      move(this.x, this.y)
+    },
+    stopForward () {
+      this.y -= this.speed
+      move(this.x, this.y)
     }
   }
 }
-
 </script>
 
 <style lang="scss">
-
   .testModule {
     display:flex;
     justify-content: center;
     align-items: center;
   }
+
   .arrow {
     height: 100px;
     width: 100px;

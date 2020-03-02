@@ -6,14 +6,9 @@
 </template>
 
 <script>
-import io from 'socket.io-client'
-const path = 'http://localhost:5000'
-const socket = io.connect(path)
-const sequenceSocket = io.connect(path + '/sequence')
-const logMessage = message => console.log(message)
+import { startSequence, stopSequence } from '../api/SequenceSocketEventEmitter'
 
 export default {
-
   name: 'StartStopButton',
   data () {
     return {
@@ -21,27 +16,20 @@ export default {
       started: false
     }
   },
-  beforeMount () {
-    socket.on('connect', () => {
-      sequenceSocket.emit('start')
-      console.log('worked')
-    })
-    socket.on('message', logMessage)
-  },
   methods: {
     start () {
       this.started = true
+      startSequence()
     },
-
     stop () {
       this.started = false
+      stopSequence()
     }
   }
 }
 </script>
 
 <style lang="scss">
-
   .startStopButton {
     .startButton {
       width: 100%;
@@ -58,7 +46,5 @@ export default {
     .button:active {
       background: blue;
     }
-
   }
-
 </style>

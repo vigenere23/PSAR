@@ -11,9 +11,7 @@ export default {
 </script>
 
 <style lang="scss">
-
   .camera {
-
     p {
       margin: 0;
       color: white;
