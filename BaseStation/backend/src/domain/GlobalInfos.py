@@ -2,7 +2,7 @@ from injector import inject
 from src.domain.ThreadManager import ThreadManager
 
 
-class GlobalContext:
+class GlobalInfos:
 
     @inject
     def __init__(self, thread_manager: ThreadManager):

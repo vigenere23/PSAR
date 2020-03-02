@@ -5,7 +5,8 @@ from src.domain.sequence.task_containers.dummy.RobotTestTaskContainer import Rob
 
 class TaskContainerFactory:
 
-    def get_class(self, name):
+    @staticmethod
+    def get_class(name):
         if name == 'main':
             return MainTaskContainer
         elif name == 'robot':

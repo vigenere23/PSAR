@@ -1,42 +1,57 @@
 from abc import ABC
-from src.domain.GlobalContext import GlobalContext
+from src.domain.GlobalInfos import GlobalInfos
 from src.domain.sequence.SequenceEventEmitter import SequenceEventEmitter
+from src.domain.sequence.Task import Task
 from src.domain.sequence.exceptions.WarningException import WarningException
 
 
 class TaskContainer(ABC):
 
-    def __init__(self, global_context: GlobalContext, sequence_event_emitter: SequenceEventEmitter):
-        self.__global_context = global_context
+    def __init__(self, global_infos: GlobalInfos, sequence_event_emitter: SequenceEventEmitter):
+        self.__global_infos = global_infos
         self.__sequence_event_emitter = sequence_event_emitter
         self.__tasks = []
 
     def _add_task(self, task):
         self.__tasks.append(task)
 
-    """
-    Executes all the tasks, from the first one specified.
-
-    :param first_task:
-    :type str:
-        The first task to execute. All the following tasks will also be executed.
-    """
     def execute(self, first_task=None):
+        """
+        Executes all the tasks, from the first one specified.
+
+        :param first_task: The first task to execute. All the following tasks will also be executed.
+        """
         tasks = self.__crop_to_first_task(first_task)
+        self._before_execution()
 
         for task in tasks:
-            self.__global_context.wait_until_resumed()
+            self.__global_infos.wait_until_resumed()
             self.__sequence_event_emitter.send_task_started(task.name())
             self.__execute_task(task)
 
+        self._after_execution()
         self.__sequence_event_emitter.send_sequence_ended()
 
-    """
-    :param first_task:
-    :type str:
-        The first task to execute. All the following tasks will also be executed.
-    """
+    def _before_execution(self):
+        """
+        Execute before running any task
+
+        """
+        pass
+
+    def _after_execution(self):
+        """
+        Execute after running any task
+
+        """
+        pass
+
     def __crop_to_first_task(self, first_task: str):
+        """
+        :param first_task: The first task to execute. All the following tasks will also be executed.
+        :type first_task: str
+
+        """
         if first_task is None:
             return self.__tasks
 
@@ -46,14 +61,14 @@ class TaskContainer(ABC):
 
         return self.__tasks[first_task_index:]
 
-    """
-    Executes a task and acts depending on the outcome / exceptions raised.
+    def __execute_task(self, task: Task):
+        """
+        Executes a task and acts depending on the outcome / exceptions raised.
 
-    :param task:
-    :type Task:
-        The task to execute.
-    """
-    def __execute_task(self, task):
+        :param task: The task to execute.
+        :type task: Task
+
+        """
         try:
             task.execute()
         except WarningException as exception:

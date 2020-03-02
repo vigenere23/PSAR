@@ -1,5 +1,5 @@
 from injector import inject
-from src.domain.GlobalContext import GlobalContext
+from src.domain.GlobalInfos import GlobalInfos
 from src.domain.ThreadManager import ThreadManager
 from src.domain.sequence.TaskContainer import TaskContainer
 
@@ -9,11 +9,11 @@ class SequenceRunner:
     @inject
     def __init__(
         self,
-        global_context: GlobalContext,
+        global_infos: GlobalInfos,
         task_container: TaskContainer,
         thread_manager: ThreadManager
     ):
-        self.__global_context = global_context
+        self.__global_infos = global_infos
         self.__task_container = task_container
         self.__thread_manager = thread_manager
         self.__sequence_thread = None
@@ -30,7 +30,7 @@ class SequenceRunner:
         pass
 
     def pause(self):
-        self.__global_context.pause()
+        self.__global_infos.pause()
 
     def resume(self):
-        self.__global_context.resume()
+        self.__global_infos.resume()

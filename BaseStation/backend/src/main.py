@@ -12,6 +12,7 @@ from src.context.SocketApiContext import SocketApiContext
 injector = Injector(modules=[MainContext(event_instance=socket)])
 SocketApiContext(injector, socket.on_namespace).register_routes()
 
+
 if __name__ == '__main__':
     socket.run(
         app,
