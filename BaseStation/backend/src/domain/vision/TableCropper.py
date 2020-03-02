@@ -1,7 +1,5 @@
-from src.domain.vision.ImageProcessing import *
 import numpy as np
 import cv2
-import math
 
 
 class TableCalibration(object):

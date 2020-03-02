@@ -2,7 +2,8 @@ import cv2
 import glob
 from src.domain.vision.calibration.CameraCalibrator import CameraCalibrator
 from src.domain.vision.calibration.CameraCalibrationRepository import CameraCalibrationRepository
-from src.domain.vision.aruco.ArucoFinder import ArucoFinder
+from src.domain.vision.object_finding.ArucoMarkerFinder import ArucoMarkerFinder
+from src.domain.vision.object_finding.pillars.PillarFinder import PillarFinder
 
 CHESSBOARD_ROWS = 7
 CHESSBOARD_COLUMNS = 6
@@ -21,9 +22,10 @@ if __name__ == '__main__':
         camera_calibration = camera_calibrator.calibrate_camera('./assets/images/calib/*')
         camera_calibration_repository.save_calibration(camera_calibration, './src/config/calibrations/calib1.json')
 
-    aruco_finder = ArucoFinder(camera_calibration, ARUCO_LENGTH)
+    aruco_marker_finder = ArucoMarkerFinder(camera_calibration, ARUCO_LENGTH)
+    pillar_finder = PillarFinder(aruco_marker_finder)
 
     for filename in glob.glob('./assets/images/pillars/*'):
         pillar_image = cv2.imread(filename)
-        aruco_positions = aruco_finder.find_pillars(pillar_image)
-        aruco_finder.show_aruco_axes(pillar_image, aruco_positions)
+        aruco_markers_positions = pillar_finder.find_all(pillar_image)
+        aruco_marker_finder.show_all_markers_axes(pillar_image, aruco_markers_positions)

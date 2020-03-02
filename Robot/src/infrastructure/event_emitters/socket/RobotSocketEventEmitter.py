@@ -22,4 +22,3 @@ class RobotSocketEventEmitter(RobotEventEmitter):
 
     def send_resistor_info(self, resistor_info: ResistorInfo):
         self.__socket.emit('resistor_info', resistor_info.to_json(), namespace=self.__namespace)
-

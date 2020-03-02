@@ -1,7 +1,7 @@
 import time
 from src.config import socketio_config
 from src.app import socket
-from src.context.interfaces import SocketHandlersContext
+from src.context.SocketHandlersContext import SocketHandlersContext
 
 
 def connect_socket(connection_string, interval=0.5):

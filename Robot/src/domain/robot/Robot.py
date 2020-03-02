@@ -31,7 +31,8 @@ class Robot:
 
     def move(self, x: int, y: int):
         """
-        Send via STMCommunicator the move command with x and y cartesian projection of the direction vector
+        Send via STMCommunicator the move command with x and y cartesian projection
+            of the direction vector
         :param x: Speed of movement in X axis from -100 to 100
         :param y: Speed of movement in Y axis from -100 to 100
         """

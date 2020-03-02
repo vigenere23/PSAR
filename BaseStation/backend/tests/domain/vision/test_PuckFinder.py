@@ -6,7 +6,7 @@ import cv2
 from src import assets
 import os
 
-from src.domain.vision.PuckFinder import PuckFinder
+from src.domain.vision.object_finding.pucks.puck_finding import PuckFinder
 from src.domain.vision.TableCropper import TableCropper
 
 

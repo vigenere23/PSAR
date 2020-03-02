@@ -4,7 +4,7 @@ from typing import List
 from src.domain.vision.types import CameraCalibration, ArucoMarker, ArucoPosition
 
 
-class ArucoFinder:
+class ArucoMarkerFinder:
     def __init__(self, camera_calibration: CameraCalibration, aruco_length: float):
         self.__camera_calibration = camera_calibration
 
@@ -14,7 +14,7 @@ class ArucoFinder:
         self.__aruco_parameters = aruco.DetectorParameters_create()
         self.__axis_length = 100.0
 
-    def find_aruco_markers(self, image) -> List[ArucoMarker]:
+    def find_all(self, image) -> List[ArucoMarker]:
         grayscaled_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         corners, ids, rejectedImgPoints = aruco.detectMarkers(
             grayscaled_image,
@@ -26,9 +26,7 @@ class ArucoFinder:
             ArucoMarker(aruco_id, aruco_corners) for aruco_id, aruco_corners in zip(ids, corners)
         ]
 
-    def find_pillars(self, image) -> List[ArucoPosition]:
-        aruco_markers = self.find_aruco_markers(image)
-        # TODO filter with ids
+    def calculate_3d_positions(self, aruco_markers: List[ArucoMarker]) -> List[ArucoPosition]:
         corners = [aruco_marker.corner for aruco_marker in aruco_markers]
 
         rotation_vectors, translation_vectors, _ = aruco.estimatePoseSingleMarkers(
@@ -42,7 +40,7 @@ class ArucoFinder:
 
         return aruco_positions
 
-    def show_aruco_axes(self, image, aruco_positions: List[ArucoPosition]):
+    def show_all_markers_axes(self, image, aruco_positions: List[ArucoPosition]):
         aruco_markers_image = image
 
         for aruco_position in aruco_positions:

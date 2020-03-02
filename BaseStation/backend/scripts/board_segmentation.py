@@ -3,10 +3,9 @@ import numpy as np
 
 if __name__ == '__main__':
 
-    pannel_path = "10004.jpg"
-    print(pannel_path)
+    board_path = './assets/images/boards/arrows/10004.jpg'
 
-    img = cv2.imread(pannel_path)
+    img = cv2.imread(board_path)
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
     low_hsv = np.array([0, 40, 40])
@@ -14,19 +13,19 @@ if __name__ == '__main__':
     mask1 = cv2.inRange(img, low_hsv, high_hsv)
 
     k_size = 20
-    kernel = np.ones((k_size,k_size),np.uint8)
+    kernel = np.ones((k_size, k_size), np.uint8)
     opened = cv2.morphologyEx(mask1, cv2.MORPH_OPEN, kernel)
 
     k_size = 10
-    kernel = np.ones((k_size,k_size),np.uint8)
-    opened = cv2.erode(opened,kernel,iterations = 2)
+    kernel = np.ones((k_size, k_size), np.uint8)
+    opened = cv2.erode(opened, kernel, iterations=2)
 
     k_size = 20
-    kernel = np.ones((k_size,k_size),np.uint8)
+    kernel = np.ones((k_size, k_size), np.uint8)
     opened = cv2.morphologyEx(opened, cv2.MORPH_OPEN, kernel)
 
     opened = cv2.bitwise_not(opened)
 
     res1 = cv2.bitwise_and(img, img, mask=opened)
 
-    cv2.imwrite("output.png", res1)
+    cv2.imwrite('./assets/images/boards/arrows/output.png', res1)

@@ -1,10 +1,9 @@
-from .. import Context
-from src.interfaces.socket_handlers import RobotSocketEventHandler
 from src.domain.robot.Robot import Robot
-from src.infrastructure.socket_emitters import RobotSocketEventEmitter
+from src.interfaces.socket_api.RobotSocketEventHandler import RobotSocketEventHandler
+from src.infrastructure.event_emitters.socket.RobotSocketEventEmitter import RobotSocketEventEmitter
 
 
-class SocketHandlersContext(Context):
+class SocketHandlersContext:
 
     def __init__(self, socket):
         self.__socket = socket

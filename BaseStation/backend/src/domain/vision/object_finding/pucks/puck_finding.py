@@ -1,5 +1,6 @@
-from src.domain.vision.ImageProcessing import *
-import os
+import cv2
+import numpy as np
+import src.domain.vision.image_processing as img_proc
 
 
 class PuckColors(object):
@@ -67,10 +68,10 @@ class PuckFinder(object):
     def find_pucks(self, image, debug=False):
         self.pucks = []
         ret_pucks = {}
-        ret_pucks_score = {}
-        processed_image_sat = saturation_multiplier(image, 3)
-        processed_image_sat_open = image_opening(processed_image_sat, kernel=np.ones((4, 4), np.uint8))
-        image_edge = edge_detection_bgr(processed_image_sat_open)
+        # ret_pucks_score = {}
+        processed_image_sat = img_proc.saturation_multiplier(image, 3)
+        processed_image_sat_open = img_proc.image_opening(processed_image_sat, kernel=np.ones((4, 4), np.uint8))
+        image_edge = img_proc.edge_detection_bgr(processed_image_sat_open)
         if debug:
             cv2.imshow("edge", image_edge)
             cv2.imshow("processed_image", processed_image_sat_open)
@@ -80,9 +81,10 @@ class PuckFinder(object):
             circles = np.uint16(np.around(circles))
             for circle in circles[0, :]:
                 if circle[2] != 0:  # if the radius (circle[2]) is not null
-                    single_circle_image = crop_image_circle(processed_image_sat_open, x=circle[0], y=circle[1],
-                                                            radius=11)
-                    color_average = average_image_color(single_circle_image)
+                    single_circle_image = img_proc.crop_image_circle(
+                        processed_image_sat_open, x=circle[0], y=circle[1], radius=11
+                    )
+                    color_average = img_proc.average_image_color(single_circle_image)
                     colors_scores = self.puck_colors.get_color_scores(color_average)
                     self.pucks.append(Puck(x=circle[0], y=circle[1], color=colors_scores, color_average=color_average))
 
@@ -135,22 +137,3 @@ class PuckFinder(object):
                         return False
 
         return True
-
-
-def photo_test(filename):
-    frame = cv2.imread(filename)
-
-    frame = frame[85:-75, 10:]
-    puck_finder = PuckFinder()
-    puck_finder.find_pucks(frame, debug=True)
-
-    cv2.imshow("original", frame)
-
-    cv2.waitKey(0)   # press enter to pass to the next image
-
-
-if __name__ == '__main__':
-    puckTestPhotos = os.listdir("PuckTestPhotos")
-    for photo in puckTestPhotos:
-        print("\n\nPuckTestPhotos/" + photo)
-        photo_test("PuckTestPhotos/" + photo)  # press enter to pass to the next image
