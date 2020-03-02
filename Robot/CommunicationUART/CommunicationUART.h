@@ -7,15 +7,22 @@
 
 #include "mbed.h"
 #include "rtos.h"
+#include "Robot.h"
 
+class Robot;
 class CommunicationUART {
 private:
-    Thread thread;
-    Serial rPiSerial;  // tx, rx
-    void handleUART();
+    // Thread thread;
+    Robot* robot;
+    void read_data();
+    int rx_index = 0;
+    char rx_buffer[80];
+    bool input_available = false;
 
 public:
-    CommunicationUART(PinName txPinName, PinName rxPinName);
+    RawSerial rPiSerial;  // tx, rx
+    void handleUART();
+    CommunicationUART(Robot* robot, PinName txPinName, PinName rxPinName);
 
 };
 

@@ -1,10 +1,15 @@
-#include "Robot/Robot.h"
+
+#include "CommunicationUART.h"
+#include "Robot.h"
  
 int main() {
+    
     Robot robot;
-    DigitalOut led1(LED1);
+    CommunicationUART communicationUART(&robot, SERIAL_TX, SERIAL_RX);
+
+    robot.move(0, 0);
     while(1) {
-        led1 = !led1;
-        thread_sleep_for(500);
+        communicationUART.handleUART();
+        // thread_sleep_for(1);
     }
 }
