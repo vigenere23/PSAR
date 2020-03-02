@@ -15,6 +15,9 @@ flake8 = "*"
 coverage = "*"
 injector = "*"
 dataclasses-json = "*"
+matplotlib = "*"
+pillow = "*"
+pandas = "*"
 
 [requires]
 python_version = "3.8"
