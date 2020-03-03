@@ -17,6 +17,7 @@ flake8 = "*"
 coverage = "*"
 pyserial = "*"
 dataclasses-json = "*"
+injector = "*"
 
 [requires]
 python_version = "3.8"

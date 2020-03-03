@@ -1,7 +1,9 @@
 import time
+from injector import Injector
 from src.config import socketio_config
 from src.app import socket
-from src.context.SocketHandlersContext import SocketHandlersContext
+from src.context.SocketApiContext import SocketApiContext
+from src.context.MainContext import MainContext
 
 
 def connect_socket(connection_string, interval=0.5):
@@ -10,12 +12,13 @@ def connect_socket(connection_string, interval=0.5):
             socket.connect(connection_string)
         except Exception as exception:
             print(exception)
-            print('Retrying connection in {} seconds'.format(interval))
+            print(f'Retrying connection in {interval} seconds')
             time.sleep(interval)
 
 
 if __name__ == '__main__':
-    SocketHandlersContext(socket).register()
-    connection_string = "http://{}:{}".format(socketio_config['host'], socketio_config['port'])
+    injector = Injector(modules=[MainContext(event_instance=socket)])
+    SocketApiContext(injector, socket.register_namespace).register_routes()
+
+    connection_string = f"http://{socketio_config['host']}:{socketio_config['port']}"
     connect_socket(connection_string)
-    print("I'm out!")

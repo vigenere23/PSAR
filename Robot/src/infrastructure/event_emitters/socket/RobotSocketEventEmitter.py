@@ -1,3 +1,5 @@
+from injector import inject
+from socketio.client import Client
 from src.domain.data_classes.Resistor import ResistorInfo
 from src.domain.data_classes.RobotBattery import RobotBattery
 from src.domain.data_classes.RobotGripper import RobotGripperInfo
@@ -7,7 +9,8 @@ from src.domain.robot.RobotEventEmitter import RobotEventEmitter
 
 class RobotSocketEventEmitter(RobotEventEmitter):
 
-    def __init__(self, socket):
+    @inject
+    def __init__(self, socket: Client):
         self.__socket = socket
         self.__namespace = '/robot'
 

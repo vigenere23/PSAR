@@ -1,15 +1,15 @@
-from serial import Serial
-from src.domain.STMCommunicator import STMCommunicator
-from src.app import socket
+from injector import inject
+from socketio.client import Client
+from src.domain.stm.STMWriter import STMWriter
 from src.domain.robot.RobotPower import RobotPower
-STM_COM_PORT = "COM1"
 
 
 class Robot:
-    def __init__(self, robot_event_emitter):
-        self._robot_event_emitter = robot_event_emitter
-        self.__stm_serial = Serial(STM_COM_PORT)
-        self.stm_communicator = STMCommunicator(self, self.__stm_serial)
+
+    @inject
+    def __init__(self, socket: Client, stm_writer: STMWriter):
+        self.__socket = socket
+        self.__stm_writer = stm_writer
 
         self.move_x = 0
         self.move_y = 0
@@ -39,7 +39,7 @@ class Robot:
         self.move_x = x
         self.move_y = y
         print(f"move: x: {x}, y: {y}")
-        self.stm_communicator.move(self.move_x, self.move_y)
+        self.__stm_writer.send_move(self.move_x, self.move_y)
 
     def rotate(self, rotate_speed: int):
         """
@@ -48,13 +48,13 @@ class Robot:
         """
         self.rotation_speed = rotate_speed
         print(f"rotate: rotate_speed: {rotate_speed}")
-        self.stm_communicator.rotate(self.rotation_speed)
+        self.__stm_writer.send_rotate(self.rotation_speed)
 
     def resistor_measurement(self):
         """
         Send via STMCommunicator the resistor command to trigger a resistor measurement
         """
-        self.stm_communicator.resistor_measurement()
+        self.__stm_writer.send_mesure_resistance()
 
     def set_gripper_magnet(self, state: bool):
         """
@@ -62,7 +62,7 @@ class Robot:
         :param state: state of the electromagnet. (True: ON, False: OFF)
         """
         self.gripper_state = state
-        self.stm_communicator.gripper(self.gripper_state)
+        self.__stm_writer.send_gripper_status(self.gripper_state)
 
     # Communication STM <- RPI
     # todo change to use Observer object instead like in BaseStation
@@ -84,10 +84,9 @@ class Robot:
     def remove_resistor_changed_listener(self, fn):
         self.__resistor_changed_listeners.pop(fn)
 
-    @staticmethod
-    def trig_listeners(listeners_list, *arg):
+    def trig_listeners(self, listeners_list, *arg):
         for listener_fn in listeners_list:
-            socket.start_background_task(listener_fn, arg)
+            self.__socket.start_background_task(listener_fn, arg)
 
     @property
     def powers(self):

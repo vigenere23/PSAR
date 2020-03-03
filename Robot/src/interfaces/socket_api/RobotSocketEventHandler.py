@@ -1,5 +1,5 @@
+from injector import inject
 from socketio import ClientNamespace
-
 from src.domain.data_classes.Resistor import ResistorControl
 from src.domain.data_classes.RobotCamera import RobotCamera
 from src.domain.data_classes.RobotGripper import RobotGripperControl
@@ -10,6 +10,7 @@ from src.domain.robot.Robot import Robot
 
 class RobotSocketEventHandler(ClientNamespace):
 
+    @inject
     def __init__(self, robot: Robot):
         super().__init__('/robot')
         self.robot = robot
