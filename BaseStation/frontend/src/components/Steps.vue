@@ -13,7 +13,9 @@
 </template>
 
 <script>
-import api from '@/api/steps'
+// TODO this is temporary
+import { steps } from '@/data/steps'
+import { on } from '../api/eventHandlers/sequence'
 
 export default {
   name: 'steps',
@@ -24,11 +26,13 @@ export default {
       upcomingSteps: []
     }
   },
-  async mounted () {
-    const response = await api.getSteps()
-    this.previousSteps = response.previousSteps
-    this.upcomingSteps = response.upcomingSteps
-    this.ongoingStep = response.ongoingStep
+  mounted () {
+    this.previousSteps = steps.previousSteps
+    this.upcomingSteps = steps.upcomingSteps
+    this.ongoingStep = steps.ongoingStep
+
+    on('task_started', (task) => { console.log(`task '${task}' started`) })
+    on('task_ended', (task) => { console.log(`task '${task}' ended`) })
   }
 }
 </script>

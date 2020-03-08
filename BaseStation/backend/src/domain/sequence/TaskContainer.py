@@ -1,4 +1,5 @@
 from abc import ABC
+from typing import List
 from src.domain.GlobalInfos import GlobalInfos
 from src.domain.sequence.SequenceEventEmitter import SequenceEventEmitter
 from src.domain.sequence.Task import Task
@@ -24,10 +25,14 @@ class TaskContainer(ABC):
         tasks = self.__crop_to_first_task(first_task)
         self._before_execution()
 
+        task_names = [task.name() for task in tasks]
+        self.__sequence_event_emitter.send_sequence_started(task_names)
+
         for task in tasks:
             self.__global_infos.wait_until_resumed()
             self.__sequence_event_emitter.send_task_started(task.name())
             self.__execute_task(task)
+            self.__sequence_event_emitter.send_task_ended(task.name())
 
         self._after_execution()
         self.__sequence_event_emitter.send_sequence_ended()
@@ -46,7 +51,7 @@ class TaskContainer(ABC):
         """
         pass
 
-    def __crop_to_first_task(self, first_task: str):
+    def __crop_to_first_task(self, first_task: str) -> List[Task]:
         """
         :param first_task: The first task to execute. All the following tasks will also be executed.
         :type first_task: str

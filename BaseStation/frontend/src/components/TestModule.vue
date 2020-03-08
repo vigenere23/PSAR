@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { move } from '../api/SequenceSocketEventEmitter'
+import { sendMove } from '@/api/eventEmitters/debugRobot'
 
 export default {
   name: 'TestModule',
@@ -31,36 +31,36 @@ export default {
   methods: {
     goLeft () {
       this.x -= this.speed
-      move(this.x, this.y)
+      sendMove(this.x, this.y)
     },
     goRight () {
       this.x += this.speed
-      move(this.x, this.y)
+      sendMove(this.x, this.y)
       console.log('right')
     },
     goForward () {
       this.y += this.speed
-      move(this.x, this.y)
+      sendMove(this.x, this.y)
     },
     goBack () {
       this.y -= this.speed
-      move(this.x, this.y)
+      sendMove(this.x, this.y)
     },
     stopLeft () {
       this.x += this.speed
-      move(this.x, this.y)
+      sendMove(this.x, this.y)
     },
     stopRight () {
       this.x -= this.speed
-      move(this.x, this.y)
+      sendMove(this.x, this.y)
     },
     stopBack () {
       this.y += this.speed
-      move(this.x, this.y)
+      sendMove(this.x, this.y)
     },
     stopForward () {
       this.y -= this.speed
-      move(this.x, this.y)
+      sendMove(this.x, this.y)
     }
   }
 }

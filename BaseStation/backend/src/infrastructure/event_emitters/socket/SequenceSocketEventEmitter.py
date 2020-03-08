@@ -15,6 +15,14 @@ class SequenceSocketEventEmitter(SequenceEventEmitter):
             'task_started', task_name, namespace=self.__namespace
         )
 
+    def send_task_ended(self, task_name):
+        self.__socket.emit(
+            'task_ended', task_name, namespace=self.__namespace
+        )
+
+    def send_sequence_started(self, task_names: list):
+        self.__socket.emit('started', {'tasks': task_names}, namespace=self.__namespace)
+
     def send_sequence_ended(self):
         self.__socket.emit('ended', namespace=self.__namespace)
 

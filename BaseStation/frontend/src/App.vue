@@ -14,11 +14,12 @@
 </style>
 
 <script>
-import { connect } from './api/SequenceSocketEventEmitter'
+import { on } from '@/api/eventHandlers/index'
 
 export default {
-  beforeMount () {
-    connect()
+  mounted () {
+    on('connect', () => console.log('connected'))
+    on('message', (message) => console.log(message))
   }
 }
 </script>

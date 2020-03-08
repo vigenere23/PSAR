@@ -8,6 +8,14 @@ class SequenceEventEmitter(ABC):
         pass
 
     @abstractmethod
+    def send_task_ended(self, task_name):
+        pass
+
+    @abstractmethod
+    def send_sequence_started(self):
+        pass
+
+    @abstractmethod
     def send_sequence_ended(self):
         pass
 

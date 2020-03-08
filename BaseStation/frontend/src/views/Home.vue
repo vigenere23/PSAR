@@ -1,6 +1,5 @@
 <template>
   <div class="home-page">
-    <h1>This is the home page</h1>
     <steps></steps>
     <camera class="RCamera"></camera>
     <resistance></resistance>
@@ -23,12 +22,20 @@ import TestModule from '@/components/TestModule/'
 
 export default {
   name: 'home',
-  components: { TestModule, Holder, Time, StartStopButton, Resistance, Camera, Steps }
+  components: {
+    TestModule,
+    Holder,
+    Time,
+    StartStopButton,
+    Resistance,
+    Camera,
+    Steps
+  }
 }
 </script>
 
 <style lang="scss">
-  @import '../assets/scss/fonts';
+  @import '~styles/fonts';
 
   .home-page {
     display: flex;
