@@ -1,6 +1,6 @@
 <template>
-    <div class="testModule">
-      <div class="arrowContainer">
+    <div class="test-module">
+      <div class="arrow-container">
         <div class="void"></div>
         <div class="arrow" id="arrowUp" @mousedown="goForward" @mouseup="stopForward"></div>
         <div class="void"></div>
@@ -18,7 +18,7 @@
 import { sendMove } from '@/api/eventEmitters/debugRobot'
 
 export default {
-  name: 'TestModule',
+  name: 'RobotController',
   data () {
     return {
       interval: false,
@@ -67,22 +67,31 @@ export default {
 </script>
 
 <style lang="scss">
-  .testModule {
-    display:flex;
-    justify-content: center;
-    align-items: center;
-  }
+$arrow-size: 60px;
+$border-size: $arrow-size / 5;
+
+.test-module {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow-container {
+  width: $arrow-size * 3;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 
   .arrow {
-    height: 100px;
-    width: 100px;
-    border-right: 20px solid;
-    border-bottom: 20px solid;
+    height: $arrow-size;
+    width: $arrow-size;
+    border-right: $border-size solid;
+    border-bottom: $border-size solid;
   }
 
   .arrow:active {
-    border-right: 20px solid white;
-    border-bottom: 20px solid white;
+    border-right: $border-size solid white;
+    border-bottom: $border-size solid white;
   }
 
   #arrowUp {
@@ -102,14 +111,8 @@ export default {
   }
 
   .void {
-    height: 100px;
-    width: 100px;
+    height: $arrow-size;
+    width: $arrow-size;
   }
-
-  .arrowContainer {
-    width: 300px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
+}
 </style>

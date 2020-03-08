@@ -1,106 +1,123 @@
 <template>
   <div class="home-page">
-    <steps></steps>
-    <camera class="RCamera"></camera>
-    <resistance></resistance>
-    <camera class="WCamera"></camera>
-    <StartStopButton></StartStopButton>
-    <Holder></Holder>
-    <Time></Time>
-    <test-module></test-module>
+    <div class="left">
+      <Tasks />
+    </div>
+
+    <div class="center">
+      <div class="center__top">
+        <Resistance class="resistance" />
+        <Holder class="holder" />
+      </div>
+      <Camera class="world-camera" />
+      <div class="center__bottom">
+        <RobotController class="robot-controller" />
+        <Camera class="robot-camera" />
+      </div>
+    </div>
+
+    <div class="right">
+      <span>Other modules here</span>
+    </div>
   </div>
 </template>
 
 <script>
-import Steps from '@/components/Steps/'
-import Camera from '@/components/Camera/'
-import Resistance from '@/components/Resistance/'
-import StartStopButton from '@/components/StartStopButton/'
-import Time from '@/components/Time/'
-import Holder from '@/components/Holder/'
-import TestModule from '@/components/TestModule/'
+import Tasks from '@/components/Tasks'
+import Camera from '@/components/Camera'
+import Resistance from '@/components/Resistance'
+import Holder from '@/components/Holder'
+import RobotController from '@/components/RobotController'
 
 export default {
   name: 'home',
   components: {
-    TestModule,
+    RobotController,
     Holder,
-    Time,
-    StartStopButton,
     Resistance,
     Camera,
-    Steps
+    Tasks
   }
 }
 </script>
 
 <style lang="scss">
-  @import '~styles/fonts';
+@import '~@/styles/fonts';
 
-  .home-page {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    height: 720px;
+.home-page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+
+  > * {
+    border: solid 1px black;
   }
 
-  .steps {
-    border: solid;
-    background: lightgreen;
+  .left, .center, .right {
+    flex-grow: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .left {
     width: 280px;
-    height: 540px;
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+
+  .center {
+    > * {
+      border: solid 1px black;
+    }
+
+    &__top {
+      display: flex;
+      width: 100%;
+      height: 140px;
+    }
+
+    &__bottom {
+      display: flex;
+      height: 240px;
+    }
+  }
+
+  .right {
+    width: 360px;
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+
+  .tasks {
+    flex-grow: 1;
   }
 
   .resistance {
-    margin-left: -40px;
-    width: 420px;
-    height: 130px;
-    border: solid;
+    background-color: red;
+    flex-grow: 1;
   }
 
-  .WCamera {
-    margin-left: -40px;
-    height: 410px;
-    width: 730px;
-    border: solid;
-    background: purple;
+  .world-camera {
+    background-color: purple;
+    flex-grow: 1;
   }
 
-  .RCamera {
-    width: 320px;
-    height: 180px;
-    border: solid;
-    background: purple;
-  }
-
-  .startStopButton {
-    width: 205px;
-    height: 180px;
-    border: solid;
-  }
-
-  .time {
-    width: 485px;
-    height: 180px;
-    background: aqua;
-    margin-top: 410px;
-    margin-left: -485px;
-    border: solid;
+  .robot-camera {
+    background-color: purple;
+    height: 100%;
+    width: 400px;
   }
 
   .holder {
-    width: 320px;
-    height: 130px;
-    background: coral;
-    margin-left: -320px;
-    border: solid;
+    background-color: coral;
+    flex-grow: 1;
   }
 
-  .testModule {
-    height: 800px;
-    width: 526px;
-    background: green;
-    border: solid;
+  .robot-controller {
+    background-color: green;
+    height: 100%;
+    width: 240px;
   }
+}
 </style>

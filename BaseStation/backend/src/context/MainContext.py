@@ -1,7 +1,7 @@
 from injector import Module, Binder
 
 from src.context.RobotInstanceContext import RobotInstanceContext
-from src.context.ThreadManagerContext import ThreadManagerContext
+# from src.context.ThreadManagerContext import ThreadManagerContext
 from src.context.SequenceContext import SequenceContext
 from src.context.EventEmittersContext import EventEmittersContext
 from src.context.EventInstanceContext import EventInstanceContext
@@ -19,6 +19,7 @@ class MainContext(Module):
 
     def configure(self, binder: Binder):
         binder.install(EventInstanceContext(self.__event_instance))
+        binder.install(EventEmittersContext())
         # binder.install(ThreadManagerContext())
 
         # TODO fix this -> global_context seems to exists once PER THREAD
@@ -28,5 +29,4 @@ class MainContext(Module):
         binder.bind(GlobalInfos, to=global_infos)
 
         binder.install(RobotInstanceContext(RobotInfos()))
-        binder.install(EventEmittersContext())
         binder.install(SequenceContext())

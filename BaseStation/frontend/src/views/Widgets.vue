@@ -1,16 +1,16 @@
 <template>
   <div class="widgets-page">
-    <Steps />
+    <Tasks />
   </div>
 </template>
 
 <script>
-import Steps from '@/components/Steps'
+import Tasks from '@/components/Tasks'
 
 export default {
   name: 'widgets',
   components: {
-    Steps
+    Tasks
   }
 }
 </script>
