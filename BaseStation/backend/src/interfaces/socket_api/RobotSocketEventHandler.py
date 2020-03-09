@@ -1,10 +1,10 @@
 from injector import inject
 from flask_socketio import Namespace
 
-from src.domain.data_classes.Resistor import ResistorInfo
-from src.domain.data_classes.RobotBattery import RobotBattery
-from src.domain.data_classes.RobotGripper import RobotGripperInfo
-from src.domain.data_classes.RobotPowers import RobotPowers
+from src.domain.robot.data_classes.Resistor import ResistorInfo
+from src.domain.robot.data_classes.RobotBattery import RobotBattery
+from src.domain.robot.data_classes.RobotGripper import RobotGripperInfo
+from src.domain.robot.data_classes.RobotPowers import RobotPowers
 from src.domain.robot.RobotInfos import RobotInfos
 
 
@@ -29,4 +29,4 @@ class RobotSocketEventHandler(Namespace):
 
     def on_resistor_info(self, resistor_info_json: str):
         resistor_info: ResistorInfo = ResistorInfo.from_json(resistor_info_json)
-        # todo handle resistor value
+        self.__robot_infos.resistor_info = resistor_info

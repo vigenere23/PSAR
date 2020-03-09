@@ -5,13 +5,13 @@ from dataclasses_json import dataclass_json
 @dataclass_json
 @dataclass
 class ResistorControl:
-    start_measurement: bool
+    start_measurement: bool = False
 
 
 @dataclass_json
 @dataclass
 class ResistorInfo:
-    value: int
+    value: int = 0
 
     @property
     def first_digit(self) -> int:

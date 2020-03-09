@@ -9,6 +9,6 @@ class SerialPortContext(Module):
 
     def configure(self, binder: Binder):
         if args.serial_port == 'fake':
-            binder.bind(SerialPort, to=FakeSerialPort)
+            binder.bind(SerialPort, to=FakeSerialPort(random_reception_generator=True))
         else:
             binder.bind(SerialPort, to=RealSerialPort(args.serial_port))

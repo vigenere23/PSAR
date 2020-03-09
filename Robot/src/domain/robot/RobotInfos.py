@@ -1,5 +1,4 @@
 from src.domain.Observer import Observer
-from src.domain.data_classes.Point2D import Point2D
 from src.domain.robot.data_classes.Resistor import ResistorControl, ResistorInfo
 from src.domain.robot.data_classes.RobotBattery import RobotBattery
 from src.domain.robot.data_classes.RobotCamera import RobotCamera
@@ -11,8 +10,11 @@ from src.domain.robot.data_classes.RobotPuckTransporter import RobotPuckTranspor
 
 class RobotInfos:
     def __init__(self):
-        self.__position = Point2D(0, 0)
-        self.position_observer = Observer()
+
+        # Control BaseStation -> Robot
+
+        self.__movement = RobotMovement()
+        self.movement_observer = Observer()
 
         self.__camera = RobotCamera()
         self.camera_observer = Observer()
@@ -20,41 +22,28 @@ class RobotInfos:
         self.__gripper_control = RobotGripperControl()
         self.gripper_control_observer = Observer()
 
-        self.__gripper_info = RobotGripperInfo()
-        self.gripper_info_observer = Observer()
-
-        self.__movement = RobotMovement()
-        self.movement_observer = Observer()
-
-        self.__powers = RobotPowers()
-        self.powers_observer = Observer()
-
         self.__puck_transporter_control = RobotPuckTransporterControl()
         self.puck_transporter_control_observer = Observer()
-
-        self.__puck_transporter_info = RobotPuckTransporterInfo()
-        self.puck_transporter_info_observer = Observer()
-
-        self.__angle = 0
-        self.angle_observer = Observer()
-
-        self.__battery = RobotBattery()
-        self.battery_observer = Observer()
 
         self.__resistor_control = ResistorControl()
         self.resistor_control_observer = Observer()
 
+        # Info   Robot -> BaseStation
+
+        self.__gripper_info = RobotGripperInfo()
+        self.gripper_info_observer = Observer()
+
+        self.__powers = RobotPowers()
+        self.powers_observer = Observer()
+
+        self.__puck_transporter_info = RobotPuckTransporterInfo()
+        self.puck_transporter_info_observer = Observer()
+
+        self.__battery = RobotBattery()
+        self.battery_observer = Observer()
+
         self.__resistor_info = ResistorInfo()
         self.resistor_info_observer = Observer()
-
-    @property
-    def position(self):
-        return self.__position
-
-    @position.setter
-    def position(self, new_position: Point2D):
-        self.__position = new_position
-        self.position_observer.trig_listeners(new_position)
 
     @property
     def camera(self):
@@ -154,4 +143,3 @@ class RobotInfos:
     def resistor_info(self, new_resistor_info: ResistorInfo):
         self.__resistor_info = new_resistor_info
         self.resistor_info_observer.trig_listeners(new_resistor_info)
-

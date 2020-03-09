@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
 
-from src.domain.data_classes.Resistor import ResistorControl
-from src.domain.data_classes.RobotCamera import RobotCamera
-from src.domain.data_classes.RobotGripper import RobotGripperControl
-from src.domain.data_classes.RobotMovement import RobotMovement
-from src.domain.data_classes.RobotPuckTransporter import RobotPuckTransporterControl
+from src.domain.robot.data_classes.Resistor import ResistorControl
+from src.domain.robot.data_classes.RobotCamera import RobotCamera
+from src.domain.robot.data_classes.RobotGripper import RobotGripperControl
+from src.domain.robot.data_classes.RobotMovement import RobotMovement
+from src.domain.robot.data_classes.RobotPuckTransporter import RobotPuckTransporterControl
 
 
 class RobotEventEmitter(ABC):

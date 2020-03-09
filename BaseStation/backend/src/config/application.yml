@@ -3,6 +3,6 @@ socketio:
   port: 5000
 
 flask:
-  secret: 'place your secret key here'
+  secret: 'secret'
   env: 'developpment'
   debug: True

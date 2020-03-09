@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "254db6bea190aad9b06581314082c06654442281a58e70c0191b8ea441821362"
+            "sha256": "2dc33ac1810fc73fa408fa08657cb2014b83e07f2699f821628b84c208f9ff18"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -81,6 +81,22 @@
             "index": "piwheels",
             "version": "==5.0.3"
         },
+        "crc8": {
+            "hashes": [
+                "sha256:70d8905af9a3813cdf0852346e6026180d14e06f870d816c5cd41b78da7114af",
+                "sha256:d748fe5480732016f896a0c1d7a2fcf16fcdf7d07727a10fb5dce888830a24d2"
+            ],
+            "index": "piwheels",
+            "version": "==0.1.0"
+        },
+        "dataclasses": {
+            "hashes": [
+                "sha256:3459118f7ede7c8bea0fe795bff7c6c2ce287d01dd226202f7c9ebc0610a7836",
+                "sha256:494a6dcae3b8bcf80848eea2ef64c0cc5cd307ffc263e17cdf42f3e5420808e6"
+            ],
+            "markers": "python_version == '3.6'",
+            "version": "==0.7"
+        },
         "dataclasses-json": {
             "hashes": [
                 "sha256:2d20a1deb0745b5976174d1a7c397771a84a081abda9deed9619fcdba82c332d",
@@ -121,10 +137,10 @@
         },
         "marshmallow": {
             "hashes": [
-                "sha256:3a94945a7461f2ab4df9576e51c97d66bee2c86155d3d3933fab752b31effab8",
-                "sha256:4b95c7735f93eb781dfdc4dded028108998cad759dda8dd9d4b5b4ac574cbf13"
+                "sha256:90854221bbb1498d003a0c3cc9d8390259137551917961c8b5258c64026b2f85",
+                "sha256:ac2e13b30165501b7d41fc0371b8df35944f5849769d136f20e2c5f6cdc6e665"
             ],
-            "version": "==3.5.0"
+            "version": "==3.5.1"
         },
         "marshmallow-enum": {
             "hashes": [

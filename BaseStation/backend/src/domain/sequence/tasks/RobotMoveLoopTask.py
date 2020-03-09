@@ -1,6 +1,6 @@
 from injector import inject
 from src.domain.ThreadManager import ThreadManager
-from src.domain.data_classes.RobotMovement import RobotMovement
+from src.domain.robot.data_classes.RobotMovement import RobotMovement
 from src.domain.robot.RobotInfos import RobotInfos
 from src.domain.sequence.Task import Task
 

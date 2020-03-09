@@ -1,6 +1,6 @@
 from flask_socketio import Namespace
 from injector import inject
-from src.domain.data_classes.RobotMovement import RobotMovement
+from src.domain.robot.data_classes.RobotMovement import RobotMovement
 from src.domain.robot.RobotInfos import RobotInfos
 
 

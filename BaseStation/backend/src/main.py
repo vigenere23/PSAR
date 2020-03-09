@@ -8,14 +8,18 @@ from src.config import socketio_config
 from injector import Injector
 from src.context.MainContext import MainContext
 from src.context.SocketApiContext import SocketApiContext
-
-injector = Injector(modules=[MainContext(event_instance=socket)])
-SocketApiContext(injector, socket.on_namespace).register_routes()
+from src.domain.robot.RobotInfosEventListeners import RobotInfosEventListeners
 
 
 if __name__ == '__main__':
+    injector = Injector(modules=[MainContext(event_instance=socket)])
+    SocketApiContext(injector, socket.on_namespace).register_routes()
+    robot_event_listeners = injector.get(RobotInfosEventListeners)
+    robot_event_listeners.add_listeners()
+
     socket.run(
         app,
         host=socketio_config['host'],
-        port=socketio_config['port']
+        port=socketio_config['port'],
+        use_reloader=False
     )
