@@ -16,4 +16,14 @@ __parser.add_argument(
     help="choose an event technology"
 )
 
+__parser.add_argument(
+    '-c', '--camera', type=str, default='/dev/video2',
+    help="choose the video device on which the camera is located"
+)
+
+__parser.add_argument(
+    '-t', '--table', type=int, default=1,
+    help="choose the table to load right calibrations. Between 1 and 6."
+)
+
 args = __parser.parse_args()

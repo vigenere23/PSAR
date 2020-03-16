@@ -20,8 +20,27 @@ class CameraCalibrator:
         all_known_board_positions = [self.__known_board_positions for i in range(len(image_space_chessboards_corners))]
         image_size = cv2.imread(glob.glob(calibration_images_path)[0]).shape[1::-1]
         # (corners_founded), camera_matrix, distortion_coefficients, (rotation_vectors, translation_vectors)
-        camera_matrix, distortion_coefficients = cv2.calibrateCamera(all_known_board_positions, image_space_chessboards_corners, image_size, None, None)[1:3]
-        return CameraCalibration(camera_matrix, distortion_coefficients)
+        camera_matrix, distortion_coefficients, rotation_vectors, translation_vectors = cv2.calibrateCamera(
+            all_known_board_positions, image_space_chessboards_corners, image_size, None, None
+        )[1:]
+
+        calibration_error = self.__calculate_error(
+            all_known_board_positions,
+            image_space_chessboards_corners,
+            rotation_vectors,
+            translation_vectors,
+            camera_matrix,
+            distortion_coefficients
+        )
+
+        return CameraCalibration(
+            aspect_ratio=float(image_size[0]) / float(image_size[1]),
+            camera_matrix=camera_matrix,
+            distortion_coefficients=distortion_coefficients,
+            error=calibration_error,
+            image_width=image_size[0],
+            image_height=image_size[1]
+        )
 
     def __create_known_board_positions(self):
         # prepare object points, like (0,0,0), (1,0,0), (2,0,0) ....,(ROWS-1,COLUMNS-1,0)
@@ -29,6 +48,22 @@ class CameraCalibrator:
             [i, j, 0] for j in range(self.__n_chessboard_columns) for i in range(self.__n_chessboard_rows)
         ], dtype=np.float32) * self.__chessboard_square_length
         return board_positions
+
+    def __calculate_error(self, object_points, image_points, rotation_vectors, translation_vectors, camera_matrix, distortion_coefficients):
+        total_error = 0
+
+        for i in range(len(object_points)):
+            image_points_2, _ = cv2.projectPoints(
+                object_points[i],
+                rotation_vectors[i],
+                translation_vectors[i],
+                camera_matrix,
+                distortion_coefficients
+            )
+            error = cv2.norm(image_points[i], image_points_2, cv2.NORM_L2) / len(image_points_2)
+            total_error += error
+
+        return total_error / len(object_points)
 
     def get_image_space_chessboards_corners(self, calibration_images_path, show_images=False):
         image_space_chessboards_corners = []

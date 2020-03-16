@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+from src.domain.vision.types import CameraCalibration
 
 
 def edge_detection_canny(gray, sigma):
@@ -64,5 +65,15 @@ def average_image_color(image):
 
 
 def unique_count_app(a):
-    colors, count = np.unique(a.reshape(-1,a.shape[-1]), axis=0, return_counts=True)
+    colors, count = np.unique(a.reshape(-1, a.shape[-1]), axis=0, return_counts=True)
     return colors[count.argmax()]
+
+
+def undistord_image(image: np.ndarray, camera_calibration: CameraCalibration):
+    undistorded_image = cv2.undistort(
+        image,
+        camera_calibration.camera_matrix,
+        camera_calibration.distortion_coefficients
+    )
+
+    return undistorded_image
