@@ -43,15 +43,12 @@ export default {
 
 <style lang="scss">
 @import '~@/styles/fonts';
+@import '~@/styles/colors';
 
 .home-page {
   width: 100%;
   height: 100%;
   display: flex;
-
-  > * {
-    border: solid 1px black;
-  }
 
   .left, .center, .right {
     flex-grow: 1;
@@ -64,22 +61,27 @@ export default {
     width: 280px;
     flex-shrink: 0;
     flex-grow: 0;
+    border: $full-border;
   }
 
   .center {
-    > * {
-      border: solid 1px black;
-    }
-
     &__top {
       display: flex;
       width: 100%;
       height: 140px;
+
+      > * {
+        border: $full-border;
+      }
     }
 
     &__bottom {
       display: flex;
-      height: 240px;
+      height: 300px;
+
+      > * {
+        border: $full-border;
+      }
     }
   }
 
@@ -87,6 +89,7 @@ export default {
     width: 360px;
     flex-shrink: 0;
     flex-grow: 0;
+    border: $full-border;
   }
 
   .tasks {
@@ -94,28 +97,24 @@ export default {
   }
 
   .resistance {
-    background-color: red;
     flex-grow: 1;
   }
 
   .world-camera {
-    background-color: purple;
     flex-grow: 1;
+    border: $full-border;
   }
 
   .robot-camera {
-    background-color: purple;
     height: 100%;
     width: 400px;
   }
 
   .holder {
-    background-color: coral;
     flex-grow: 1;
   }
 
   .robot-controller {
-    background-color: green;
     height: 100%;
     width: 240px;
   }

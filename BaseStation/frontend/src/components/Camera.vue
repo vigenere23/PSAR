@@ -1,7 +1,7 @@
 <template>
-    <div class="camera">
-      <p>Camera Stream</p>
-    </div>
+  <div class="camera main-divs">
+    <p>No signal</p>
+  </div>
 </template>
 
 <script>
@@ -11,11 +11,15 @@ export default {
 </script>
 
 <style lang="scss">
-  .camera {
-    p {
-      margin: 0;
-      color: white;
-      font-weight: bold;
-    }
+@import '~@/styles/colors';
+
+.camera {
+  justify-content: center;
+  background: $no-signals;
+
+  p {
+    margin: 0;
+    font-weight: bold;
   }
+}
 </style>

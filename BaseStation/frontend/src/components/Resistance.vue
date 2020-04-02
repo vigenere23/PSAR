@@ -1,44 +1,63 @@
 <template>
-  <div class="resistance">
-    <p>Resistance: {{value}}</p>
-    <div class="circlesContainer">
-      <div class="circle" id="first"></div>
-      <div class="circle" id="second"></div>
-      <div class="circle" id="third"></div>
+  <div class="resistance main-divs L">
+    <div class="title L">Resistance: {{value}}</div>
+    <div class="circles">
+      <template v-if="colors.length">
+        <div class="circle" v-for="(color, i) in colors" :key="i" :style="{ backgroundColor: getColor(i), borderColor: getColor(i) }" />
+      </template>
+      <template v-else>
+        <div class="circle empty" v-for="i in 3" :key="i" />
+      </template>
     </div>
   </div>
 </template>
 
 <script>
+import { colorsToHex } from '@/assets/js/resistanceColors'
+
 export default {
   name: 'Resistance',
   data () {
     return {
-      value: 0
+      value: 120,
+      colors: [
+        'green',
+        'blue',
+        'purple'
+      ]
     }
   },
-  async mounted () {
-    this.value = 120
+  methods: {
+    getColor (index) {
+      return colorsToHex[this.colors[index]]
+    }
   }
 }
 </script>
 
 <style lang="scss">
-  .resistance {
-    background: red;
-    text-align: center;
+@import '~@/styles/component';
+@import '~@/styles/colors';
 
-    .circlesContainer {
-      display: flex;
-      justify-content: center;
-    }
+.resistance {
+  .circles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
 
-    .circle {
-      width: 50px;
-      height: 50px;
-      margin: 10px;
-      background: darkgrey;
-      border-radius: 50%
+  .circle {
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    border-radius: 50%;
+    border-size: 2px;
+    border-style: solid;
+
+    &.empty {
+      border-color: $accent-color;
     }
   }
+}
 </style>

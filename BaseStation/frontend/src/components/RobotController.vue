@@ -1,14 +1,21 @@
 <template>
-    <div class="test-module">
-      <div class="arrow-container">
+    <div
+      class="robot-controller main-divs"
+      tabindex="0"
+      @keydown.up="goForward" @keyup.up="stopForward"
+      @keydown.left="goLeft" @keyup.left="stopLeft"
+      @keydown.right="goRight" @keyup.right="stopRight"
+      @keydown.down="goBack" @keyup.down="stopBack"
+    >
+      <div class="arrows">
         <div class="void"></div>
-        <div class="arrow" id="arrowUp" @mousedown="goForward" @mouseup="stopForward"></div>
+        <div class="arrow" :class="{ active: !!actives['up'] }" id="arrow-up" @mousedown="goForward" @mouseup="stopForward" />
         <div class="void"></div>
-        <div class="arrow" id="arrowLeft" @mousedown="goLeft" @mouseup="stopLeft"></div>
+        <div class="arrow" :class="{ active: !!actives['left'] }" id="arrow-left" @mousedown="goLeft" @mouseup="stopLeft" />
         <div class="void"></div>
-        <div class="arrow" id="arrowRight" @mousedown="goRight" @mouseup="stopRight"></div>
+        <div class="arrow" :class="{ active: !!actives['right'] }" id="arrow-right" @mousedown="goRight" @mouseup="stopRight" />
         <div class="void"></div>
-        <div class="arrow" id="arrowDown" @mousedown="goBack" @mouseup="stopBack"></div>
+        <div class="arrow" :class="{ active: !!actives['down'] }" id="arrow-down" @mousedown="goBack" @mouseup="stopBack" />
         <div class="void"></div>
       </div>
     </div>
@@ -16,6 +23,7 @@
 
 <script>
 import { sendMove } from '@/api/eventEmitters/debugRobot'
+import Vue from 'vue'
 
 export default {
   name: 'RobotController',
@@ -25,41 +33,49 @@ export default {
       unit: 0,
       y: 0,
       x: 0,
-      speed: 25
+      speed: 25,
+      actives: {}
     }
   },
   methods: {
     goLeft () {
+      Vue.set(this.actives, 'left', true)
       this.x -= this.speed
       sendMove(this.x, this.y)
     },
     goRight () {
+      Vue.set(this.actives, 'right', true)
       this.x += this.speed
       sendMove(this.x, this.y)
-      console.log('right')
     },
     goForward () {
+      Vue.set(this.actives, 'up', true)
       this.y += this.speed
       sendMove(this.x, this.y)
     },
     goBack () {
+      Vue.set(this.actives, 'down', true)
       this.y -= this.speed
       sendMove(this.x, this.y)
     },
     stopLeft () {
+      Vue.set(this.actives, 'left', false)
       this.x += this.speed
       sendMove(this.x, this.y)
     },
     stopRight () {
+      Vue.set(this.actives, 'right', false)
       this.x -= this.speed
       sendMove(this.x, this.y)
     },
-    stopBack () {
-      this.y += this.speed
+    stopForward () {
+      Vue.set(this.actives, 'up', false)
+      this.y -= this.speed
       sendMove(this.x, this.y)
     },
-    stopForward () {
-      this.y -= this.speed
+    stopBack () {
+      Vue.set(this.actives, 'down', false)
+      this.y += this.speed
       sendMove(this.x, this.y)
     }
   }
@@ -67,52 +83,55 @@ export default {
 </script>
 
 <style lang="scss">
-$arrow-size: 60px;
+@import '~@/styles/component';
+@import '~@/styles/colors';
+
+$arrow-size: 45px;
 $border-size: $arrow-size / 5;
 
-.test-module {
+.robot-controller {
   display:flex;
   justify-content: center;
   align-items: center;
-}
 
-.arrow-container {
-  width: $arrow-size * 3;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  .arrows {
+    width: $arrow-size * 3;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 
-  .arrow {
-    height: $arrow-size;
-    width: $arrow-size;
-    border-right: $border-size solid;
-    border-bottom: $border-size solid;
-  }
+    .arrow {
+      height: $arrow-size;
+      width: $arrow-size;
+      border-right: $border-size solid $accent-color;
+      border-bottom: $border-size solid $accent-color;
 
-  .arrow:active {
-    border-right: $border-size solid white;
-    border-bottom: $border-size solid white;
-  }
+      &.active, &:active {
+        border-right: $border-size solid $border-color;
+        border-bottom: $border-size solid $border-color;
+      }
+    }
 
-  #arrowUp {
-    transform: rotate(-135deg);
-  }
+    #arrow-up {
+      transform: rotate(-135deg);
+    }
 
-  #arrowDown {
-    transform: rotate(45deg);
-  }
+    #arrow-down {
+      transform: rotate(45deg);
+    }
 
-  #arrowLeft {
-    transform: rotate(135deg);
-  }
+    #arrow-left {
+      transform: rotate(135deg);
+    }
 
-  #arrowRight {
-    transform: rotate(-45deg);
-  }
+    #arrow-right {
+      transform: rotate(-45deg);
+    }
 
-  .void {
-    height: $arrow-size;
-    width: $arrow-size;
+    .void {
+      height: $arrow-size;
+      width: $arrow-size;
+    }
   }
 }
 </style>

@@ -1,4 +1,13 @@
-$accent-color: #313035;
-$text-color: rgba(0, 0, 0, 0.87);
-$secondary-text-color: rgba(0, 0, 0, 0.54);
-$border-color: rgba(0, 0, 0, 0.27);
+$text-color: lightgrey;
+$accent-color: rgb(26, 93, 151);
+
+$first-half-gradient: linear-gradient(90deg, rgb(63, 63, 63) 0%, rgb(47, 47, 47) 100%);
+$second-half-gradient: linear-gradient(90deg, rgb(47, 47, 47) 0%, rgba(40,40,40,1) 100%);
+$full-gradient: linear-gradient(90deg, rgb(63, 63, 63) 0%, rgb(40, 40, 40) 100%);
+$no-signals: rgb(49, 49, 49);
+
+$title-colorL: linear-gradient(90deg, rgb(62, 62, 62) 0%, rgb(82, 82, 82) 100%);
+$title-colorR: linear-gradient(-90deg, rgb(62, 62, 62) 0%, rgb(82, 82, 82) 100%);
+
+$full-border: solid rgb(110, 110, 110) 2px;
+$border-color: rgb(110, 110, 110);

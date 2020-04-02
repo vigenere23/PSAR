@@ -38,8 +38,6 @@ export default {
 @include reset;
 
 #app {
-  background: pink;
-
   .content {
     overflow: auto;
   }

@@ -47,6 +47,7 @@ export default {
   data () {
     return {
       started: false,
+      paused: false,
       startStopLoading: false,
       pauseResumeLoading: false
     }

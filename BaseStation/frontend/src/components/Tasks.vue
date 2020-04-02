@@ -1,5 +1,6 @@
 <template>
   <v-stepper v-model="ongoingTaskIndex" vertical class="tasks">
+    <div class="title R">Étapes de la séquence </div>
     <template v-for="(task, i) in tasks">
       <v-stepper-step :key="i" :step="i + 1" :complete="doneTasks.includes(task)">
         {{ task }}
@@ -60,32 +61,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-@import '~@/styles/fonts';
-
-.steps {
-  font-family: $monospace;
-  padding: 8px;
-  height: 9em;
-  width: 500px;
-  overflow: auto;
-
-  p {
-    margin: 0;
-    font-size: 14px;
-  }
-
-  .current {
-    font-weight: 700;
-  }
-
-  .previous {
-    color: grey;
-  }
-
-  button {
-    align-self: end;
-  }
-}
-</style>
