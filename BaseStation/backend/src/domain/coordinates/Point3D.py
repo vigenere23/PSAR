@@ -28,8 +28,11 @@ class Point3D(Point):
     def to_numpy(self, shape=__DEFAULT_SHAPE):
         return np.array([self.x, self.y, self.z]).reshape(shape)
 
+    def to_tuple(self) -> tuple:
+        return (self.x, self.y, self.z)
+
     def __repr__(self):
-        return f'({self.x}, {self.y}, {self.z})'
+        return str(self.to_tuple())
 
     def __str__(self):
         return self.__repr__()

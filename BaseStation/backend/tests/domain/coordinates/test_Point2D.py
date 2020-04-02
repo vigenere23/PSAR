@@ -43,6 +43,13 @@ class Point2DTest(TestCase):
         except Exception:
             self.fail(f'should accept numpy shape {shape}')
 
+    def test_to_tuple_order_is_preserved(self):
+        x, y = (-1, 2)
+        point = Point2D(x, y)
+        point_tuple = point.to_tuple()
+        self.assertEquals(point_tuple[0], x)
+        self.assertEquals(point_tuple[1], y)
+
     def test_to_numpy_coordinates_order_is_preserved(self):
         x, y = (-1, 2)
         point = Point2D(x, y)

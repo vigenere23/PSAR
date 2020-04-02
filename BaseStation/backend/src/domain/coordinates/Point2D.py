@@ -27,8 +27,11 @@ class Point2D(Point):
     def to_numpy(self, shape=__DEFAULT_SHAPE):
         return np.array([self.x, self.y]).reshape(shape)
 
+    def to_tuple(self) -> tuple:
+        return (self.x, self.y)
+
     def __repr__(self):
-        return f'({self.x}, {self.y})'
+        return str(self.to_tuple())
 
     def __str__(self):
         return self.__repr__()

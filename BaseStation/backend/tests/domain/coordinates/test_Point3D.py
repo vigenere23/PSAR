@@ -45,6 +45,14 @@ class Point3DTest(TestCase):
         except Exception:
             self.fail(f'should accept numpy shape {shape}')
 
+    def test_to_tuple_order_is_preserved(self):
+        x, y, z = (-1, 2, 4)
+        point = Point3D(x, y, z)
+        point_tuple = point.to_tuple()
+        self.assertEquals(point_tuple[0], x)
+        self.assertEquals(point_tuple[1], y)
+        self.assertEquals(point_tuple[2], z)
+
     def test_to_numpy_coordinates_order_is_preserved(self):
         x, y, z = (-1, 2, 4)
         point = Point3D(x, y, z)

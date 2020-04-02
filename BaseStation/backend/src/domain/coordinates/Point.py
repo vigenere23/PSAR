@@ -10,5 +10,9 @@ class Point(ABC):
         pass
 
     @abstractmethod
-    def to_numpy(self):
+    def to_numpy(self) -> np.ndarray:
+        pass
+
+    @abstractmethod
+    def to_tuple(self) -> tuple:
         pass
