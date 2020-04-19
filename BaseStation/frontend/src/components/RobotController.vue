@@ -1,6 +1,6 @@
 <template>
     <div
-      class="robot-controller main-divs"
+      class="robot-controller main-divs L"
       tabindex="0"
       @keydown.up="goForward" @keyup.up="stopForward"
       @keydown.left="goLeft" @keyup.left="stopLeft"

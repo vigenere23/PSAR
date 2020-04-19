@@ -17,7 +17,9 @@
     </div>
 
     <div class="right">
-      <span>Other modules here</span>
+      <energy-report></energy-report>
+      <board-informations></board-informations>
+      <square-diagram></square-diagram>
     </div>
   </div>
 </template>
@@ -28,10 +30,16 @@ import Camera from '@/components/Camera'
 import Resistance from '@/components/Resistance'
 import Holder from '@/components/Holder'
 import RobotController from '@/components/RobotController'
+import EnergyReport from '@/components/EnergyReport'
+import BoardInformations from '@/components/BoardInformations'
+import SquareDiagram from '@/components/SquareDiagram'
 
 export default {
   name: 'home',
   components: {
+    SquareDiagram,
+    BoardInformations,
+    EnergyReport,
     RobotController,
     Holder,
     Resistance,
@@ -77,7 +85,9 @@ export default {
 
     &__bottom {
       display: flex;
-      height: 300px;
+      flex-shrink: 0;
+      flex-grow: 0;
+      min-height: 175px;
 
       > * {
         border: $full-border;
@@ -117,6 +127,11 @@ export default {
   .robot-controller {
     height: 100%;
     width: 240px;
+  }
+
+  .board-informations {
+    border: $full-border;
+    height: 100px;
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app id="app">
     <v-app-bar
       app
       color="primary"
@@ -9,7 +9,7 @@
       <SequenceControlButtons></SequenceControlButtons>
     </v-app-bar>
 
-    <v-content class="content">
+    <v-content id="content">
       <router-view/>
     </v-content>
   </v-app>
@@ -38,8 +38,14 @@ export default {
 @include reset;
 
 #app {
-  .content {
-    overflow: auto;
+  #content {
+    overflow-x: auto;
   }
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent //no ugly scrollbar
 }
 </style>

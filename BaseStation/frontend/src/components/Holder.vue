@@ -1,9 +1,11 @@
 <template>
   <div class="holder main-divs R">
     <div class="title R">Status du préhenseur</div>
-    <div class="status">
-      <span>Status:</span>
-      <div class="circle" id="first"></div>
+    <div class="content">
+      <div class="status">
+        <span>Status:</span>
+        <div class="circle" id="first"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -21,7 +23,11 @@ export default {
 .holder {
 
   .content {
-    justify-content: space-between;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
   }
 
   .circle {

@@ -1,5 +1,5 @@
 <template>
-  <div class="camera main-divs">
+  <div class="camera main-divs R">
     <p>No signal</p>
   </div>
 </template>
