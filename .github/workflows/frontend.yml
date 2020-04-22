@@ -16,13 +16,13 @@ jobs:
       - name: Checking out
         uses: actions/checkout@v2
 
-      - name: Setup
-        uses: actions/setup-node@v1
+      - name: Installing yarn
+        run: sudo apt install yarn
 
-      - name: Install dependencies
-        run: npm install
+      - name: Installing dependencies
+        run: yarn
         working-directory: ${{env.working-directory}}
 
-      - name: Lint
-        run: npm run lint
+      - name: Linting
+        run: yarn lint
         working-directory: ${{env.working-directory}}
