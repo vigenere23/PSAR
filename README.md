@@ -21,4 +21,4 @@ If you are on bash, you can simply run the `setup` script.
 ## Main contributors
 
 - [GASTP33 (vigenere23)](https://github.com/vigenere23)
-- [DDROL](https://github.com/DDROL)
+- [DODRO35](https://github.com/DODRO35)
