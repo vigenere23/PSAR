@@ -1,4 +1,4 @@
-# Welcome to the Design 3 software project of Team 8! (the best one)
+# iRondelle
 
 The complete project is seperated into 3 independant sub-projects :
 
@@ -12,8 +12,8 @@ For more general info about the project, the standards and the tools, **PLEASE**
 
 ## Quick setup
 
-If you are on Linux (or Mac?), you can simply `source` the `setup.sh` script.
+If you are on bash, you can simply run the `setup` script.
 
 ```bash
-source scripts/setup.sh
+./scripts/setup
 ```

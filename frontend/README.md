@@ -1,4 +1,4 @@
-# Design 3 - The Interface
+# iRondelle - Interface
 
 ## Project setup
 
