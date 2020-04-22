@@ -2,9 +2,9 @@
 
 The complete project is seperated into 3 independant sub-projects :
 
-1. [Robot](./Robot/)
-2. [BaseStation (backend)](./BaseStation/backend/)
-3. [BaseStation (frontend)](./BaseStation/frontend/)
+1. [robot](./robot/)
+2. [backend](./backend/)
+3. [frontend)](./frontend/)
 
 For info on how to setup them, please read their `README`.
 

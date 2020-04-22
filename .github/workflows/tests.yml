@@ -1,13 +1,13 @@
-name: Python package
+name: Tests
 
 on: [push]
 
 jobs:
-  Test_Backend:
+  Backend:
 
     runs-on: ubuntu-latest
     env:
-      working-directory: ./BaseStation/backend
+      working-directory: ./backend
     strategy:
       matrix:
         python-version: [3.8]
@@ -46,11 +46,11 @@ jobs:
         pipenv run coverage report
       working-directory: ${{env.working-directory}}
 
-  Test_Robot:
+  Robot:
 
     runs-on: ubuntu-latest
     env:
-      working-directory: ./Robot
+      working-directory: ./robot
     strategy:
       matrix:
         python-version: [3.8]

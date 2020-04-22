@@ -1,9 +1,9 @@
-cd BaseStation/backend
+cd robot
 source scripts/setup.sh
 cd -
-cd Robot
+cd backend
 source scripts/setup.sh
 cd -
-cd BaseStation/frontend
+cd frontend
 yarn
 cd -
