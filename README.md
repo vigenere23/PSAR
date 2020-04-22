@@ -8,14 +8,16 @@
 
 > Obstacle detection
 
-PSAR is a small robot built to do many tasks. It is mounted on a 4-wheel base equipped with a small camera and a gripper. There is also a top-view camera (called the *World camera*) to help with pathfinding. The main goal is to take 3 pucks and place them on the corners or a square. The pucks to take, the deposit order and the corners on which to deposit the pucks are all determined by various detection tasks :
+PSAR is a small robot built to do many tasks. It is mounted on a 4-wheel base equipped with a small camera and a gripper. There is also a top-view camera (called the *World camera*) to help with pathfinding. The robot is said to be *partially supervised* because its decisions are greatly help by 2 external factors : a top-view camera and aruco markers. 
+
+The main goal is to take 3 pucks and place them on the corners or a square. The pucks to take, the deposit order and the corners on which to deposit the pucks are all determined by various detection tasks :
 
 - Calculating a resistor value by analyzing the circuit's electric current and voltage
 - Determining the orientation of a specific arrow from a set of 9
 - Determining the letter at a specific position from a set of 9
 - Determining the position of each stations on the table
 
-Throughout the course, some obstacles (pillars) will be placed on the table. The system will have to detect them and find a path to dodge them. The overall goal is to complete as many rounds as possible in only 10 minutes.
+Throughout the course, some obstacles (pillars) will be placed on the table. The system will have to detect them and find a path to dodge them. The overall goal is to complete as many rounds as possible in only 10 minutes. There is also a set of information to be displayed in real-time while the robot performs its tasks, like the internal state of the backend and robot, the consumption levels, the planned and real paths, etc.
 
 Unfortunately, due to COVID-19 measures of prevention, the laboratory of experimentation was closed mid-semester, which prevented us to collect data and perform tests that were necessary for the completion of the project.
 
