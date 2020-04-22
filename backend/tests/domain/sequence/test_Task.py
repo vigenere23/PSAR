@@ -1,5 +1,5 @@
 from unittest import TestCase
-from .stubs import TaskStub
+from tests.domain.sequence.stubs.TaskStub import TaskStub
 
 
 class TaskTest(TestCase):

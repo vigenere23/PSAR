@@ -26,5 +26,5 @@ class RobotEventEmitter(ABC):
         pass
 
     @abstractmethod
-    def send_resistor_control(self,  resistor_control: ResistorControl):
+    def send_resistor_control(self, resistor_control: ResistorControl):
         pass

@@ -315,8 +315,6 @@ class ManualMapping(object):
         self.save_mapping("Mapping/")
 
 
-
-
 if __name__ == '__main__':
     manualMapping = ManualMapping()
     # manualMapping.complete_mapping()

@@ -15,7 +15,7 @@ class Observer:
         self.__last_kwargs = kwargs
         for fn in self.__listeners:
             fn(*args, **kwargs)
-            
+
     def trig_listeners_with_last_event(self):
         if self.__last_args is not None or self.__last_kwargs is not None:
             self.trig_listeners(*self.__last_args, **self.__last_kwargs)

@@ -30,6 +30,6 @@ class ResistorInfo:
     @property
     def multiplier(self) -> int:
         for i in range(8):
-            if self.value/(10**i) < 100:
+            if self.value / (10**i) < 100:
                 return i
         raise ValueError

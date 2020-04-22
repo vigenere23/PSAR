@@ -18,4 +18,3 @@ class MainContext(Module):
         binder.install(SerialPortContext())
         binder.install(EventEmittersContext())
         binder.install(RobotInstanceContext(RobotInfos()))
-

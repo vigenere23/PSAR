@@ -22,4 +22,3 @@ class RobotMoveSquareTask(Task):
         self.__robot_infos.movement = RobotMovement(0, -50, 0)
         self.__thread_manager.sleep(1)
         self.__robot_infos.movement = RobotMovement(0, 0, 0)
-

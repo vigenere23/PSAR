@@ -6,8 +6,9 @@ cd ..
 BLUE='\033[0;34m'
 NC='\033[0m'
 
-echo -e "... 1/2 🐍 installing ${BLUE}pipenv${NC}\n"
-pip install pipenv
+echo -e "... 1/2 🐍 Creating ${BLUE}venv${NC}\n"
+python -m venv .venv
+source .venv/bin/activate
 
 echo -e "\n... 2/2 🔧 installing ${BLUE}dependencies${NC} (this might take a while)\n"
-pipenv install
+pip install -r requirements.txt

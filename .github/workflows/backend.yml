@@ -23,37 +23,34 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: ${{ matrix.python-version }}
-      
-      - name: Installing pipenv
-        uses: dschep/install-pipenv-action@v1
 
       - name: Caching dependencies
         uses: actions/cache@v1
         with:
-          path: '~/.cache/pipenv'
-          key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
-          restore-keys: ${{ runner.os }}-pipenv-
-      
+          path: '~/.cache/pip'
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: ${{ runner.os }}-pip-
+
       - name: Installing dependencies
         run: |
-          pipenv install --system --deploy --ignore-pipfile --verbose
+          pip install -r requirements.txt
         working-directory: ${{env.working-directory}}
-        
+
       - name: Linting
         run: |
           # stop the build if there are Python syntax errors or undefined names
-          pipenv run flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          python -m flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
           # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-          pipenv run flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+          python -m flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
         working-directory: ${{env.working-directory}}
-        
+
       - name: Testing
         run: |
-          pipenv run nose2
+          python -m nose2
         working-directory: ${{env.working-directory}}
 
       - name: Code coverage
         run: |
-          pipenv run coverage run
-          pipenv run coverage report
+          python -m coverage run
+          python -m coverage report
         working-directory: ${{env.working-directory}}

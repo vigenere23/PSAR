@@ -15,5 +15,3 @@ class RobotPuckTransporterControl:
 class RobotPuckTransporterInfo:
     position: int = 0
     contain: List[Puck] = field(default_factory=list)
-
-

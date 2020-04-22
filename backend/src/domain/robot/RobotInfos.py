@@ -154,4 +154,3 @@ class RobotInfos:
     def resistor_info(self, new_resistor_info: ResistorInfo):
         self.__resistor_info = new_resistor_info
         self.resistor_info_observer.trig_listeners(new_resistor_info)
-
