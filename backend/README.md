@@ -1,4 +1,6 @@
-# iRondelle - Backend
+# PSAR - Backend
+
+![obstacle detection](https://user-images.githubusercontent.com/32545895/79995493-49afdb80-8485-11ea-9100-70d93fb9326a.gif)
 
 ## Before starting
 
