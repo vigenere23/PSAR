@@ -8,7 +8,7 @@ The complete project is seperated into 3 independant sub-projects :
 
 For info on how to setup them, please read their `README`.
 
-For more general info about the project, the standards and the tools, **PLEASE** visit the [wiki](./wiki)!
+For more general info about the project, the standards and the tools, **PLEASE** visit the [wiki](./wiki/README.md)!
 
 ## Quick setup
 
