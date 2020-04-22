@@ -1,4 +1,6 @@
-# iRondelle - Robot
+# PSAR - Robot
+
+![robot-moving](https://user-images.githubusercontent.com/32545895/79999160-9695b100-8489-11ea-904b-cf8804416c93.gif)
 
 ## Before starting
 
