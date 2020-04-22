@@ -1,0 +1,13 @@
+#! /bin/bash
+
+cd "$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )"
+cd ..
+
+BLUE='\033[0;34m'
+NC='\033[0m'
+
+echo -e "... 🐍 installing ${BLUE}pipenv${NC} (1/2)\n"
+pip install pipenv
+
+echo -e "\n... 🔧 installing ${BLUE}dependencies${NC} (2/2) (this might take a while)\n"
+pipenv install
