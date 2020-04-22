@@ -1,5 +1,5 @@
-![Backend](https://github.com/vigenere23/iRondelle/workflows/Backend/badge.svg)
 ![Robot](https://github.com/vigenere23/iRondelle/workflows/Robot/badge.svg)
+![Backend](https://github.com/vigenere23/iRondelle/workflows/Backend/badge.svg)
 ![Frontend](https://github.com/vigenere23/iRondelle/workflows/Frontend/badge.svg)
 
 # Partially Supervised Autonomous Robot (PSAR)
