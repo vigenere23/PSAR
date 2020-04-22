@@ -30,7 +30,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Helpful informations
 
-**PLEASE** have a look at the [wiki](https://github.com/DODRO35/design_3_logiciel/wiki), it is quite usefull!
+**PLEASE** have a look at the [wiki](../wiki/README.md), it is quite usefull!
 
 ### Structure
 
