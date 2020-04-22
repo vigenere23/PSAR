@@ -7,7 +7,7 @@ on:
       - '!robot/README.md'
 
 jobs:
-  Tests:
+  test:
     runs-on: ubuntu-latest
     env:
       working-directory: ./robot
