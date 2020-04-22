@@ -19,6 +19,8 @@ Throughout the course, some obstacles (pillars) will be placed on the table. The
 
 Unfortunately, due to COVID-19 measures of prevention, the laboratory of experimentation was closed mid-semester, which prevented us to collect data and perform tests that were necessary for the completion of the project.
 
+You can view the full report [here](./report_fr.pdf).
+
 ## Structure info
 
 The complete project is seperated into 3 sub-projects :
