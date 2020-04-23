@@ -25,11 +25,12 @@ You can view the full report [here](./report_fr.pdf).
 
 ## Structure info
 
-The complete project is seperated into 3 sub-projects :
+The complete project is seperated into 4 sub-projects :
 
-1. [robot](./robot/)
-2. [backend](./backend/)
-3. [frontend](./frontend/)
+1. [backend](./backend/) (running on the main computer)
+2. [frontend](./frontend/) (running on any device)
+3. [robot](./robot/) (running on the RaspberryPi)
+4. [embedded](./embedded) (running on the micro controller)
 
 For more general info about the project, the standards and the tools, **PLEASE** visit the [wiki](./wiki/README.md)!
 
