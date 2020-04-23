@@ -10,19 +10,19 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      working-directory: ./robot
-    strategy:
-      matrix:
-        python-version: [3.8]
+      python-version: 3.8
+    defaults:
+      run:
+        working-directory: ./robot
 
     steps:
       - name: Checking out
         uses: actions/checkout@v2
 
-      - name: Setuping Python ${{ matrix.python-version }}
+      - name: Setuping Python ${{ env.python-version }}
         uses: actions/setup-python@v1
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: ${{ env.python-version }}
       
       - name: Caching dependencies
         uses: actions/cache@v1
@@ -32,9 +32,7 @@ jobs:
           restore-keys: ${{ runner.os }}-pip-
 
       - name: Installing dependencies
-        run: |
-          pip install -r requirements.txt
-        working-directory: ${{env.working-directory}}
+        run: pip install -r requirements.txt
         
       - name: Linting
         run: |
@@ -42,15 +40,11 @@ jobs:
           python -m flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
           # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
           python -m flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-        working-directory: ${{env.working-directory}}
         
       - name: Testing
-        run: |
-          python -m nose2
-        working-directory: ${{env.working-directory}}
+        run: python -m nose2
 
       - name: Code coverage
         run: |
           python -m coverage run
           python -m coverage report
-        working-directory: ${{env.working-directory}}
