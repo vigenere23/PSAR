@@ -1,0 +1,8 @@
+{
+    "target_overrides": {
+        "DISCO_F407VG": {
+            "target.stdio_uart_tx": "PD_5",
+            "target.stdio_uart_rx": "PD_6"
+        }
+    }
+}
