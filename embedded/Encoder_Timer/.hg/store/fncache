@@ -1,0 +1,12 @@
+data/mbed-dev.lib.i
+data/Encoder/Encoder.h.i
+data/Encoder/EncoderMspInitL1.cpp.i
+data/Encoder/EncoderMspInitF1.cpp.i
+data/Encoder/EncoderInit.cpp.i
+data/Encoder/EncoderMspInitF4.cpp.i
+data/Encoder/EncoderMspInitL0.cpp.i
+data/Encoder/EncoderMspInitF0.cpp.i
+data/Encoder/EncoderMspInitF3.cpp.i
+data/main.cpp.i
+data/mbed.bld.i
+data/Encoder/EncoderMspInitL4.cpp.i
