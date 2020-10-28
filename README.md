@@ -6,7 +6,7 @@
 
 ![obstacle detection](https://user-images.githubusercontent.com/32545895/79995493-49afdb80-8485-11ea-9100-70d93fb9326a.gif)
 
-> Obstacle detection
+> Obstacle detection. The yellow circle marking the pillar's base is entirely calculated from the artificial vision algorithm.
 
 PSAR is a small robot built to do many tasks. It is mounted on a 4-wheel base equipped with a small camera and a gripper. There is also a top-view camera (called the *World camera*) to help with pathfinding. The robot is said to be *partially supervised* because its decisions are greatly help by 2 external factors : a top-view camera and aruco markers. 
 
